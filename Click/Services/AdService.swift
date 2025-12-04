@@ -22,7 +22,7 @@ final class AdService: NSObject, ObservableObject {
     }
 
     func configure() {
-        MobileAds.shared.start { [weak self] status in
+        GADMobileAds.sharedInstance().start { [weak self] _ in
             DispatchQueue.main.async {
                 self?.loadRewardedAd()
             }
