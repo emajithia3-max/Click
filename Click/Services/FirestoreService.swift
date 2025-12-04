@@ -142,10 +142,9 @@ final class FirestoreService: ObservableObject {
     func fetchSeasonHistory(uid: String) async throws -> [SeasonHistory] {
         let snapshot = try await db.collection("users").document(uid)
             .collection("seasonHistory")
-            .order(by: "endDate", descending: true)
             .getDocuments()
 
-        return snapshot.documents.compactMap { doc in
+        let history = snapshot.documents.compactMap { doc -> SeasonHistory? in
             let data = doc.data()
             return SeasonHistory(
                 id: doc.documentID,
@@ -156,5 +155,6 @@ final class FirestoreService: ObservableObject {
                 endDate: (data["endDate"] as? Timestamp)?.dateValue() ?? Date()
             )
         }
+        return history.sorted { $0.endDate > $1.endDate }
     }
 }
