@@ -7,55 +7,62 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		APP001 /* ClickApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC001; };
-		APP002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC002; };
-		APP003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = RES001; };
-		MOD001 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCMOD001; };
-		MOD002 /* SeasonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCMOD002; };
-		MOD003 /* RankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCMOD003; };
-		MOD004 /* EconomyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCMOD004; };
-		MOD005 /* LeaderboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCMOD005; };
-		MOD006 /* BoostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCMOD006; };
-		SRV001 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV001; };
-		SRV002 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV002; };
-		SRV003 /* RemoteConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV003; };
-		SRV004 /* EconomyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV004; };
-		SRV005 /* HapticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV005; };
-		SRV006 /* AdService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV006; };
-		SRV007 /* NumberFormatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV007; };
-		SRV008 /* SeasonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV008; };
-		SRV009 /* GameStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV009; };
-		VW001 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW001; };
-		VW002 /* TapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW002; };
-		VW003 /* FloatingTapLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW003; };
-		VW004 /* RankProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW004; };
-		VW005 /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW005; };
-		VW006 /* ShopItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW006; };
-		VW007 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW007; };
-		VW008 /* WorldRankSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW008; };
-		VW009 /* LeaderboardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW009; };
-		VW010 /* PrestigeModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW010; };
-		VW011 /* OfflineEarningsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW011; };
-		VW012 /* SeasonEndModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW012; };
-		VW013 /* ConsentSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW013; };
-		VW014 /* RankBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW014; };
-		VW015 /* BoostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW015; };
-		VW016 /* StatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW016; };
-		VW017 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW017; };
-		VW018 /* RankUpModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW018; };
-		VW019 /* PrestigePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW019; };
-		VM001 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVM001; };
-		VM002 /* ShopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVM002; };
-		VM003 /* LeaderboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVM003; };
-		CFG001 /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = RSCFG001; };
-		CFG002 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = RSCFG002; };
+		5E6C73A02EE12D8C003F9EA5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = PKG_DEP_FB /* FirebaseAuth */; };
+		5E6C73A12EE12D8C003F9EA5 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = PKG_DEP_FS /* FirebaseFirestore */; };
+		5E6C73A22EE12D8C003F9EA5 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = PKG_DEP_RC /* FirebaseRemoteConfig */; };
+		5E6C73A32EE12D8C003F9EA5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = PKG_DEP_AN /* FirebaseAnalytics */; };
+		5E6C73A42EE12D8C003F9EA5 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = PKG_DEP_AD /* GoogleMobileAds */; };
+		APP001 /* ClickApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC001 /* ClickApp.swift */; };
+		APP002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC002 /* ContentView.swift */; };
+		APP003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = RES001 /* Assets.xcassets */; };
+		CFG001 /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = RSCFG001 /* RemoteConfigDefaults.plist */; };
+		CFG002 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = RSCFG002 /* GoogleService-Info.plist */; };
+		MOD001 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCMOD001 /* UserModel.swift */; };
+		MOD002 /* SeasonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCMOD002 /* SeasonModel.swift */; };
+		MOD003 /* RankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCMOD003 /* RankModel.swift */; };
+		MOD004 /* EconomyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCMOD004 /* EconomyModel.swift */; };
+		MOD005 /* LeaderboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCMOD005 /* LeaderboardModel.swift */; };
+		MOD006 /* BoostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCMOD006 /* BoostModel.swift */; };
+		SRV001 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV001 /* AuthService.swift */; };
+		SRV002 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV002 /* FirestoreService.swift */; };
+		SRV003 /* RemoteConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV003 /* RemoteConfigService.swift */; };
+		SRV004 /* EconomyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV004 /* EconomyService.swift */; };
+		SRV005 /* HapticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV005 /* HapticsService.swift */; };
+		SRV006 /* AdService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV006 /* AdService.swift */; };
+		SRV007 /* NumberFormatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV007 /* NumberFormatService.swift */; };
+		SRV008 /* SeasonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV008 /* SeasonService.swift */; };
+		SRV009 /* GameStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV009 /* GameStateService.swift */; };
+		VM001 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVM001 /* HomeViewModel.swift */; };
+		VM002 /* ShopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVM002 /* ShopViewModel.swift */; };
+		VM003 /* LeaderboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVM003 /* LeaderboardViewModel.swift */; };
+		VW001 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW001 /* HomeView.swift */; };
+		VW002 /* TapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW002 /* TapButton.swift */; };
+		VW003 /* FloatingTapLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW003 /* FloatingTapLabel.swift */; };
+		VW004 /* RankProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW004 /* RankProgressView.swift */; };
+		VW005 /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW005 /* ShopView.swift */; };
+		VW006 /* ShopItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW006 /* ShopItemCard.swift */; };
+		VW007 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW007 /* LeaderboardView.swift */; };
+		VW008 /* WorldRankSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW008 /* WorldRankSlider.swift */; };
+		VW009 /* LeaderboardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW009 /* LeaderboardRow.swift */; };
+		VW010 /* PrestigeModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW010 /* PrestigeModal.swift */; };
+		VW011 /* OfflineEarningsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW011 /* OfflineEarningsModal.swift */; };
+		VW012 /* SeasonEndModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW012 /* SeasonEndModal.swift */; };
+		VW013 /* ConsentSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW013 /* ConsentSheet.swift */; };
+		VW014 /* RankBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW014 /* RankBadge.swift */; };
+		VW015 /* BoostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW015 /* BoostButton.swift */; };
+		VW016 /* StatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW016 /* StatRow.swift */; };
+		VW017 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW017 /* MainTabView.swift */; };
+		VW018 /* RankUpModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW018 /* RankUpModal.swift */; };
+		VW019 /* PrestigePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW019 /* PrestigePanel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		PROD001 /* Click.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Click.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		RES001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		RSCFG001 /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
+		RSCFG002 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		SRC001 /* ClickApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickApp.swift; sourceTree = "<group>"; };
 		SRC002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		RES001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		SRCMOD001 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		SRCMOD002 /* SeasonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonModel.swift; sourceTree = "<group>"; };
 		SRCMOD003 /* RankModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankModel.swift; sourceTree = "<group>"; };
@@ -71,6 +78,9 @@
 		SRCSRV007 /* NumberFormatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatService.swift; sourceTree = "<group>"; };
 		SRCSRV008 /* SeasonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonService.swift; sourceTree = "<group>"; };
 		SRCSRV009 /* GameStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStateService.swift; sourceTree = "<group>"; };
+		SRCVM001 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		SRCVM002 /* ShopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewModel.swift; sourceTree = "<group>"; };
+		SRCVM003 /* LeaderboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewModel.swift; sourceTree = "<group>"; };
 		SRCVW001 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		SRCVW002 /* TapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapButton.swift; sourceTree = "<group>"; };
 		SRCVW003 /* FloatingTapLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTapLabel.swift; sourceTree = "<group>"; };
@@ -90,11 +100,6 @@
 		SRCVW017 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		SRCVW018 /* RankUpModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankUpModal.swift; sourceTree = "<group>"; };
 		SRCVW019 /* PrestigePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrestigePanel.swift; sourceTree = "<group>"; };
-		SRCVM001 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		SRCVM002 /* ShopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewModel.swift; sourceTree = "<group>"; };
-		SRCVM003 /* LeaderboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewModel.swift; sourceTree = "<group>"; };
-		RSCFG001 /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
-		RSCFG002 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,28 +107,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E6C73A42EE12D8C003F9EA5 /* GoogleMobileAds in Frameworks */,
+				5E6C73A32EE12D8C003F9EA5 /* FirebaseAnalytics in Frameworks */,
+				5E6C73A22EE12D8C003F9EA5 /* FirebaseRemoteConfig in Frameworks */,
+				5E6C73A12EE12D8C003F9EA5 /* FirebaseFirestore in Frameworks */,
+				5E6C73A02EE12D8C003F9EA5 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		ROOT /* Root */ = {
-			isa = PBXGroup;
-			children = (
-				GRP001 /* Click */,
-				GRP_PROD /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		GRP_PROD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				PROD001 /* Click.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		GRP001 /* Click */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +141,15 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		GRP_CFG /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				RSCFG001 /* RemoteConfigDefaults.plist */,
+				RSCFG002 /* GoogleService-Info.plist */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
 		GRP_MOD /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +161,22 @@
 				SRCMOD006 /* BoostModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		GRP_PROD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				PROD001 /* Click.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		GRP_RES /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				RES001 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		GRP_SRV /* Services */ = {
@@ -176,6 +195,16 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		GRP_VM /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				SRCVM001 /* HomeViewModel.swift */,
+				SRCVM002 /* ShopViewModel.swift */,
+				SRCVM003 /* LeaderboardViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		GRP_VW /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +215,17 @@
 				GRP_VW_MOD /* Modals */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		GRP_VW_COMP /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				SRCVW014 /* RankBadge.swift */,
+				SRCVW016 /* StatRow.swift */,
+				SRCVW017 /* MainTabView.swift */,
+				SRCVW019 /* PrestigePanel.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		GRP_VW_HOME /* Home */ = {
@@ -200,15 +240,6 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		GRP_VW_SHOP /* Shop */ = {
-			isa = PBXGroup;
-			children = (
-				SRCVW005 /* ShopView.swift */,
-				SRCVW006 /* ShopItemCard.swift */,
-			);
-			path = Shop;
-			sourceTree = "<group>";
-		};
 		GRP_VW_LB /* Leaderboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,17 +248,6 @@
 				SRCVW009 /* LeaderboardRow.swift */,
 			);
 			path = Leaderboard;
-			sourceTree = "<group>";
-		};
-		GRP_VW_COMP /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				SRCVW014 /* RankBadge.swift */,
-				SRCVW016 /* StatRow.swift */,
-				SRCVW017 /* MainTabView.swift */,
-				SRCVW019 /* PrestigePanel.swift */,
-			);
-			path = Components;
 			sourceTree = "<group>";
 		};
 		GRP_VW_MOD /* Modals */ = {
@@ -242,31 +262,21 @@
 			path = Modals;
 			sourceTree = "<group>";
 		};
-		GRP_VM /* ViewModels */ = {
+		GRP_VW_SHOP /* Shop */ = {
 			isa = PBXGroup;
 			children = (
-				SRCVM001 /* HomeViewModel.swift */,
-				SRCVM002 /* ShopViewModel.swift */,
-				SRCVM003 /* LeaderboardViewModel.swift */,
+				SRCVW005 /* ShopView.swift */,
+				SRCVW006 /* ShopItemCard.swift */,
 			);
-			path = ViewModels;
+			path = Shop;
 			sourceTree = "<group>";
 		};
-		GRP_RES /* Resources */ = {
+		ROOT = {
 			isa = PBXGroup;
 			children = (
-				RES001 /* Assets.xcassets */,
+				GRP001 /* Click */,
+				GRP_PROD /* Products */,
 			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		GRP_CFG /* Configuration */ = {
-			isa = PBXGroup;
-			children = (
-				RSCFG001 /* RemoteConfigDefaults.plist */,
-				RSCFG002 /* GoogleService-Info.plist */,
-			);
-			path = Configuration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -522,7 +532,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = ZT56M637KS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Click/Info.plist;
@@ -555,7 +565,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = ZT56M637KS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Click/Info.plist;
@@ -605,14 +615,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		PKG_REF_FB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.0.0;
-			};
-		};
 		PKG_REF_AD /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads";
@@ -621,36 +623,43 @@
 				minimumVersion = 11.0.0;
 			};
 		};
+		PKG_REF_FB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		PKG_DEP_AD /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = PKG_REF_AD /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+		PKG_DEP_AN /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = PKG_REF_FB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
 		PKG_DEP_FB /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = PKG_REF_FB;
+			package = PKG_REF_FB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
 		PKG_DEP_FS /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = PKG_REF_FB;
+			package = PKG_REF_FB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
 		PKG_DEP_RC /* FirebaseRemoteConfig */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = PKG_REF_FB;
+			package = PKG_REF_FB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseRemoteConfig;
 		};
-		PKG_DEP_AN /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = PKG_REF_FB;
-			productName = FirebaseAnalytics;
-		};
-		PKG_DEP_AD /* GoogleMobileAds */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = PKG_REF_AD;
-			productName = GoogleMobileAds;
-		};
 /* End XCSwiftPackageProductDependency section */
-
 	};
 	rootObject = PROJ001 /* Project object */;
 }
