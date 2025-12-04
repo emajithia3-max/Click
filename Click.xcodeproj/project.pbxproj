@@ -1,0 +1,656 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		APP001 /* ClickApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC001; };
+		APP002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC002; };
+		APP003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = RES001; };
+		MOD001 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCMOD001; };
+		MOD002 /* SeasonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCMOD002; };
+		MOD003 /* RankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCMOD003; };
+		MOD004 /* EconomyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCMOD004; };
+		MOD005 /* LeaderboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCMOD005; };
+		MOD006 /* BoostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCMOD006; };
+		SRV001 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV001; };
+		SRV002 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV002; };
+		SRV003 /* RemoteConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV003; };
+		SRV004 /* EconomyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV004; };
+		SRV005 /* HapticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV005; };
+		SRV006 /* AdService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV006; };
+		SRV007 /* NumberFormatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV007; };
+		SRV008 /* SeasonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV008; };
+		SRV009 /* GameStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCSRV009; };
+		VW001 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW001; };
+		VW002 /* TapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW002; };
+		VW003 /* FloatingTapLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW003; };
+		VW004 /* RankProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW004; };
+		VW005 /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW005; };
+		VW006 /* ShopItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW006; };
+		VW007 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW007; };
+		VW008 /* WorldRankSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW008; };
+		VW009 /* LeaderboardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW009; };
+		VW010 /* PrestigeModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW010; };
+		VW011 /* OfflineEarningsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW011; };
+		VW012 /* SeasonEndModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW012; };
+		VW013 /* ConsentSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW013; };
+		VW014 /* RankBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW014; };
+		VW015 /* BoostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW015; };
+		VW016 /* StatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW016; };
+		VW017 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW017; };
+		VW018 /* RankUpModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW018; };
+		VW019 /* PrestigePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVW019; };
+		VM001 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVM001; };
+		VM002 /* ShopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVM002; };
+		VM003 /* LeaderboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCVM003; };
+		CFG001 /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = RSCFG001; };
+		CFG002 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = RSCFG002; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		PROD001 /* Click.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Click.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		SRC001 /* ClickApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickApp.swift; sourceTree = "<group>"; };
+		SRC002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		RES001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		SRCMOD001 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		SRCMOD002 /* SeasonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonModel.swift; sourceTree = "<group>"; };
+		SRCMOD003 /* RankModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankModel.swift; sourceTree = "<group>"; };
+		SRCMOD004 /* EconomyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EconomyModel.swift; sourceTree = "<group>"; };
+		SRCMOD005 /* LeaderboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardModel.swift; sourceTree = "<group>"; };
+		SRCMOD006 /* BoostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoostModel.swift; sourceTree = "<group>"; };
+		SRCSRV001 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		SRCSRV002 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
+		SRCSRV003 /* RemoteConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigService.swift; sourceTree = "<group>"; };
+		SRCSRV004 /* EconomyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EconomyService.swift; sourceTree = "<group>"; };
+		SRCSRV005 /* HapticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsService.swift; sourceTree = "<group>"; };
+		SRCSRV006 /* AdService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdService.swift; sourceTree = "<group>"; };
+		SRCSRV007 /* NumberFormatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatService.swift; sourceTree = "<group>"; };
+		SRCSRV008 /* SeasonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonService.swift; sourceTree = "<group>"; };
+		SRCSRV009 /* GameStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStateService.swift; sourceTree = "<group>"; };
+		SRCVW001 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		SRCVW002 /* TapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapButton.swift; sourceTree = "<group>"; };
+		SRCVW003 /* FloatingTapLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTapLabel.swift; sourceTree = "<group>"; };
+		SRCVW004 /* RankProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankProgressView.swift; sourceTree = "<group>"; };
+		SRCVW005 /* ShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
+		SRCVW006 /* ShopItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopItemCard.swift; sourceTree = "<group>"; };
+		SRCVW007 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
+		SRCVW008 /* WorldRankSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldRankSlider.swift; sourceTree = "<group>"; };
+		SRCVW009 /* LeaderboardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardRow.swift; sourceTree = "<group>"; };
+		SRCVW010 /* PrestigeModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrestigeModal.swift; sourceTree = "<group>"; };
+		SRCVW011 /* OfflineEarningsModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineEarningsModal.swift; sourceTree = "<group>"; };
+		SRCVW012 /* SeasonEndModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonEndModal.swift; sourceTree = "<group>"; };
+		SRCVW013 /* ConsentSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentSheet.swift; sourceTree = "<group>"; };
+		SRCVW014 /* RankBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankBadge.swift; sourceTree = "<group>"; };
+		SRCVW015 /* BoostButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoostButton.swift; sourceTree = "<group>"; };
+		SRCVW016 /* StatRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatRow.swift; sourceTree = "<group>"; };
+		SRCVW017 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		SRCVW018 /* RankUpModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankUpModal.swift; sourceTree = "<group>"; };
+		SRCVW019 /* PrestigePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrestigePanel.swift; sourceTree = "<group>"; };
+		SRCVM001 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		SRCVM002 /* ShopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewModel.swift; sourceTree = "<group>"; };
+		SRCVM003 /* LeaderboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewModel.swift; sourceTree = "<group>"; };
+		RSCFG001 /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
+		RSCFG002 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FRMWK001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ROOT /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				GRP001 /* Click */,
+				GRP_PROD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		GRP_PROD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				PROD001 /* Click.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		GRP001 /* Click */ = {
+			isa = PBXGroup;
+			children = (
+				GRP_APP /* App */,
+				GRP_MOD /* Models */,
+				GRP_SRV /* Services */,
+				GRP_VW /* Views */,
+				GRP_VM /* ViewModels */,
+				GRP_RES /* Resources */,
+				GRP_CFG /* Configuration */,
+			);
+			path = Click;
+			sourceTree = "<group>";
+		};
+		GRP_APP /* App */ = {
+			isa = PBXGroup;
+			children = (
+				SRC001 /* ClickApp.swift */,
+				SRC002 /* ContentView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		GRP_MOD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				SRCMOD001 /* UserModel.swift */,
+				SRCMOD002 /* SeasonModel.swift */,
+				SRCMOD003 /* RankModel.swift */,
+				SRCMOD004 /* EconomyModel.swift */,
+				SRCMOD005 /* LeaderboardModel.swift */,
+				SRCMOD006 /* BoostModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		GRP_SRV /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				SRCSRV001 /* AuthService.swift */,
+				SRCSRV002 /* FirestoreService.swift */,
+				SRCSRV003 /* RemoteConfigService.swift */,
+				SRCSRV004 /* EconomyService.swift */,
+				SRCSRV005 /* HapticsService.swift */,
+				SRCSRV006 /* AdService.swift */,
+				SRCSRV007 /* NumberFormatService.swift */,
+				SRCSRV008 /* SeasonService.swift */,
+				SRCSRV009 /* GameStateService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		GRP_VW /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				GRP_VW_HOME /* Home */,
+				GRP_VW_SHOP /* Shop */,
+				GRP_VW_LB /* Leaderboard */,
+				GRP_VW_COMP /* Components */,
+				GRP_VW_MOD /* Modals */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		GRP_VW_HOME /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				SRCVW001 /* HomeView.swift */,
+				SRCVW002 /* TapButton.swift */,
+				SRCVW003 /* FloatingTapLabel.swift */,
+				SRCVW004 /* RankProgressView.swift */,
+				SRCVW015 /* BoostButton.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		GRP_VW_SHOP /* Shop */ = {
+			isa = PBXGroup;
+			children = (
+				SRCVW005 /* ShopView.swift */,
+				SRCVW006 /* ShopItemCard.swift */,
+			);
+			path = Shop;
+			sourceTree = "<group>";
+		};
+		GRP_VW_LB /* Leaderboard */ = {
+			isa = PBXGroup;
+			children = (
+				SRCVW007 /* LeaderboardView.swift */,
+				SRCVW008 /* WorldRankSlider.swift */,
+				SRCVW009 /* LeaderboardRow.swift */,
+			);
+			path = Leaderboard;
+			sourceTree = "<group>";
+		};
+		GRP_VW_COMP /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				SRCVW014 /* RankBadge.swift */,
+				SRCVW016 /* StatRow.swift */,
+				SRCVW017 /* MainTabView.swift */,
+				SRCVW019 /* PrestigePanel.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		GRP_VW_MOD /* Modals */ = {
+			isa = PBXGroup;
+			children = (
+				SRCVW010 /* PrestigeModal.swift */,
+				SRCVW011 /* OfflineEarningsModal.swift */,
+				SRCVW012 /* SeasonEndModal.swift */,
+				SRCVW013 /* ConsentSheet.swift */,
+				SRCVW018 /* RankUpModal.swift */,
+			);
+			path = Modals;
+			sourceTree = "<group>";
+		};
+		GRP_VM /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				SRCVM001 /* HomeViewModel.swift */,
+				SRCVM002 /* ShopViewModel.swift */,
+				SRCVM003 /* LeaderboardViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		GRP_RES /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				RES001 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		GRP_CFG /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				RSCFG001 /* RemoteConfigDefaults.plist */,
+				RSCFG002 /* GoogleService-Info.plist */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		TGT001 /* Click */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BLDCFGLST001 /* Build configuration list for PBXNativeTarget "Click" */;
+			buildPhases = (
+				SRC_BLD001 /* Sources */,
+				FRMWK001 /* Frameworks */,
+				RES_BLD001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Click;
+			packageProductDependencies = (
+				PKG_DEP_FB /* FirebaseAuth */,
+				PKG_DEP_FS /* FirebaseFirestore */,
+				PKG_DEP_RC /* FirebaseRemoteConfig */,
+				PKG_DEP_AN /* FirebaseAnalytics */,
+				PKG_DEP_AD /* GoogleMobileAds */,
+			);
+			productName = Click;
+			productReference = PROD001 /* Click.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		PROJ001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					TGT001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = BLDCFGLST002 /* Build configuration list for PBXProject "Click" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ROOT;
+			packageReferences = (
+				PKG_REF_FB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				PKG_REF_AD /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+			);
+			productRefGroup = GRP_PROD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				TGT001 /* Click */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		RES_BLD001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				APP003 /* Assets.xcassets in Resources */,
+				CFG001 /* RemoteConfigDefaults.plist in Resources */,
+				CFG002 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		SRC_BLD001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				APP001 /* ClickApp.swift in Sources */,
+				APP002 /* ContentView.swift in Sources */,
+				MOD001 /* UserModel.swift in Sources */,
+				MOD002 /* SeasonModel.swift in Sources */,
+				MOD003 /* RankModel.swift in Sources */,
+				MOD004 /* EconomyModel.swift in Sources */,
+				MOD005 /* LeaderboardModel.swift in Sources */,
+				MOD006 /* BoostModel.swift in Sources */,
+				SRV001 /* AuthService.swift in Sources */,
+				SRV002 /* FirestoreService.swift in Sources */,
+				SRV003 /* RemoteConfigService.swift in Sources */,
+				SRV004 /* EconomyService.swift in Sources */,
+				SRV005 /* HapticsService.swift in Sources */,
+				SRV006 /* AdService.swift in Sources */,
+				SRV007 /* NumberFormatService.swift in Sources */,
+				SRV008 /* SeasonService.swift in Sources */,
+				SRV009 /* GameStateService.swift in Sources */,
+				VW001 /* HomeView.swift in Sources */,
+				VW002 /* TapButton.swift in Sources */,
+				VW003 /* FloatingTapLabel.swift in Sources */,
+				VW004 /* RankProgressView.swift in Sources */,
+				VW005 /* ShopView.swift in Sources */,
+				VW006 /* ShopItemCard.swift in Sources */,
+				VW007 /* LeaderboardView.swift in Sources */,
+				VW008 /* WorldRankSlider.swift in Sources */,
+				VW009 /* LeaderboardRow.swift in Sources */,
+				VW010 /* PrestigeModal.swift in Sources */,
+				VW011 /* OfflineEarningsModal.swift in Sources */,
+				VW012 /* SeasonEndModal.swift in Sources */,
+				VW013 /* ConsentSheet.swift in Sources */,
+				VW014 /* RankBadge.swift in Sources */,
+				VW015 /* BoostButton.swift in Sources */,
+				VW016 /* StatRow.swift in Sources */,
+				VW017 /* MainTabView.swift in Sources */,
+				VW018 /* RankUpModal.swift in Sources */,
+				VW019 /* PrestigePanel.swift in Sources */,
+				VM001 /* HomeViewModel.swift in Sources */,
+				VM002 /* ShopViewModel.swift in Sources */,
+				VM003 /* LeaderboardViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		BLDCFG_DBG /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BLDCFG_REL /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BLDCFG_TGT_DBG /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Click/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Click;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.click.season1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BLDCFG_TGT_REL /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Click/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Click;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.click.season1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BLDCFGLST001 /* Build configuration list for PBXNativeTarget "Click" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BLDCFG_TGT_DBG /* Debug */,
+				BLDCFG_TGT_REL /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BLDCFGLST002 /* Build configuration list for PBXProject "Click" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BLDCFG_DBG /* Debug */,
+				BLDCFG_REL /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		PKG_REF_FB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+		PKG_REF_AD /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		PKG_DEP_FB /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = PKG_REF_FB;
+			productName = FirebaseAuth;
+		};
+		PKG_DEP_FS /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = PKG_REF_FB;
+			productName = FirebaseFirestore;
+		};
+		PKG_DEP_RC /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = PKG_REF_FB;
+			productName = FirebaseRemoteConfig;
+		};
+		PKG_DEP_AN /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = PKG_REF_FB;
+			productName = FirebaseAnalytics;
+		};
+		PKG_DEP_AD /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = PKG_REF_AD;
+			productName = GoogleMobileAds;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+	};
+	rootObject = PROJ001 /* Project object */;
+}

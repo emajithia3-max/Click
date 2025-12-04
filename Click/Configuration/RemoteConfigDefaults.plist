@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>season_active_id</key>
+	<string>season_1</string>
+	<key>season_name</key>
+	<string>Season 1</string>
+	<key>season_end_utc</key>
+	<real>1735689600</real>
+	<key>rank_growth_a</key>
+	<real>500</real>
+	<key>rank_growth_b</key>
+	<real>1.22</real>
+	<key>prestige_growth_a</key>
+	<real>1.35</real>
+	<key>offline_hours_cap</key>
+	<real>8</real>
+	<key>base_offline_rate</key>
+	<real>10</real>
+	<key>admob_rewarded_enabled</key>
+	<true/>
+	<key>rewarded_cooldown_seconds</key>
+	<real>120</real>
+	<key>world_rank_feature_enabled</key>
+	<true/>
+	<key>world_rank_update_interval_ms</key>
+	<integer>5000</integer>
+	<key>base_tap</key>
+	<real>1</real>
+	<key>click_multiplier_per_level</key>
+	<real>0.1</real>
+	<key>offline_multiplier_per_level</key>
+	<real>0.2</real>
+	<key>milestone_coins_base</key>
+	<real>10</real>
+	<key>rank_up_coins_base</key>
+	<real>50</real>
+	<key>ad_rush_duration</key>
+	<real>30</real>
+	<key>ad_rush_multiplier</key>
+	<real>2</real>
+	<key>ad_rush_cooldown</key>
+	<real>120</real>
+	<key>overclock_duration</key>
+	<real>15</real>
+	<key>overclock_multiplier</key>
+	<real>5</real>
+	<key>overclock_cooldown</key>
+	<real>300</real>
+	<key>whats_new_text</key>
+	<string>Season 1 begins — ranks reset, fresh boosts, smoother progression.</string>
+</dict>
+</plist>
