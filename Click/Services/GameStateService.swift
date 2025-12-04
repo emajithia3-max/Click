@@ -235,7 +235,8 @@ final class GameStateService: ObservableObject {
             case .overclock:
                 data?.overclockLastUsed = Date()
                 let key = type.rawValue
-                data?.boostInventory[key] = max(0, (data?.boostInventory[key] ?? 1) - 1)
+                let currentCount = data?.boostInventory[key] ?? 1
+                data?.boostInventory[key] = max(0, currentCount - 1)
             case .offlineDoubler:
                 break
             }
