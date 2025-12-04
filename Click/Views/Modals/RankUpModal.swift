@@ -124,7 +124,7 @@ struct ConfettiPiece: View {
             .frame(width: CGFloat.random(in: 6...12), height: CGFloat.random(in: 6...12))
             .offset(
                 x: animate ? CGFloat.random(in: -100...100) : 0,
-                y: animate ? CGFloat.random(in: -150...-50) : 0
+                y: animate ? CGFloat.random(in: -150 ... -50) : 0
             )
             .opacity(animate ? 0 : 1)
             .onAppear {
