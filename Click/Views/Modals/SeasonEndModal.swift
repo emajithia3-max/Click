@@ -20,6 +20,7 @@ struct SeasonEndModal: View {
                 continueButton
             }
             .padding()
+            .background(Theme.backgroundGradient.ignoresSafeArea())
             .navigationTitle("Season Complete")
             .navigationBarTitleDisplayMode(.inline)
         }
@@ -54,7 +55,7 @@ struct SeasonEndModal: View {
         VStack(spacing: 16) {
             Text("Your Stats")
                 .font(Typography.h2)
-                .foregroundColor(.primary)
+                .foregroundColor(.white)
 
             HStack(spacing: 20) {
                 statItem(
@@ -77,10 +78,7 @@ struct SeasonEndModal: View {
             }
         }
         .padding()
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(Color(.secondarySystemBackground))
-        )
+        .glassyBackground()
     }
 
     private func statItem(title: String, value: String, icon: String) -> some View {
@@ -106,21 +104,21 @@ struct SeasonEndModal: View {
         VStack(spacing: 8) {
             Text("Coming Next")
                 .font(Typography.caption)
-                .foregroundColor(.secondary)
+                .foregroundColor(.white.opacity(0.7))
 
             Text("Season 2")
                 .font(Typography.h2)
-                .foregroundColor(.primary)
+                .foregroundColor(.white)
 
             Text(RemoteConfigService.shared.whatsNewText)
                 .font(Typography.caption)
-                .foregroundColor(.secondary)
+                .foregroundColor(.white.opacity(0.7))
                 .multilineTextAlignment(.center)
         }
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 12)
-                .stroke(Color.orange.opacity(0.3), lineWidth: 1)
+                .stroke(Theme.cardStroke, lineWidth: 1)
         )
     }
 
@@ -141,7 +139,7 @@ struct SeasonEndModal: View {
                 .padding()
                 .background(
                     RoundedRectangle(cornerRadius: 12)
-                        .fill(Color.orange.gradient)
+                        .fill(Theme.accentGradient)
                 )
         }
     }

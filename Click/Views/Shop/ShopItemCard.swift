@@ -62,10 +62,7 @@ struct ShopItemCard: View {
             purchaseButton
         }
         .padding()
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(Color(.secondarySystemBackground))
-        )
+        .glassyBackground()
     }
 
     private var levelBadge: some View {
@@ -82,7 +79,7 @@ struct ShopItemCard: View {
                 .padding(.vertical, 6)
                 .background(
                     Capsule()
-                        .fill(Color.orange.gradient)
+                        .fill(Theme.accentGradient)
                 )
             } else {
                 Text("Lv. \(currentLevel)")
@@ -92,7 +89,7 @@ struct ShopItemCard: View {
                     .padding(.vertical, 6)
                     .background(
                         Capsule()
-                            .fill(Color.blue.gradient)
+                            .fill(Theme.accentGradient)
                     )
             }
         }
@@ -117,6 +114,10 @@ struct ShopItemCard: View {
             .background(
                 RoundedRectangle(cornerRadius: 12)
                     .fill(buttonBackgroundColor)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(Theme.cardStroke, lineWidth: canAfford ? 0 : 1)
+                    )
             )
         }
         .disabled(isMaxLevel || !canAfford)
@@ -129,10 +130,10 @@ struct ShopItemCard: View {
         return canAfford ? .white : .secondary
     }
 
-    private var buttonBackgroundColor: Color {
+    private var buttonBackgroundColor: LinearGradient {
         if isMaxLevel {
-            return Color(.systemGray5)
+            return LinearGradient(colors: [Color(.systemGray5)], startPoint: .leading, endPoint: .trailing)
         }
-        return canAfford ? Color.green : Color(.systemGray4)
+        return canAfford ? Theme.accentGradient : LinearGradient(colors: [Color(.systemGray4)], startPoint: .leading, endPoint: .trailing)
     }
 }

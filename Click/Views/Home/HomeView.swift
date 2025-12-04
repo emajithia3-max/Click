@@ -40,15 +40,21 @@ struct HomeView: View {
     }
 
     private var backgroundGradient: some View {
-        LinearGradient(
-            colors: [
-                Color(.systemBackground),
-                viewModel.currentRank.tierColor.opacity(0.1)
-            ],
-            startPoint: .top,
-            endPoint: .bottom
-        )
-        .ignoresSafeArea()
+        ZStack {
+            Theme.backgroundGradient
+                .ignoresSafeArea()
+
+            LinearGradient(
+                colors: [
+                    viewModel.currentRank.tierColor.opacity(0.25),
+                    .clear
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
+            .blur(radius: 60)
+        }
     }
 
     private var headerSection: some View {
@@ -57,11 +63,11 @@ struct HomeView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(viewModel.seasonName)
                         .font(Typography.h2)
-                        .foregroundColor(.primary)
+                        .foregroundColor(.white.opacity(0.9))
 
                     Text("\(viewModel.timeRemaining) remaining")
                         .font(Typography.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(Theme.lilac.opacity(0.7))
                 }
 
                 Spacer()
@@ -135,10 +141,7 @@ struct HomeView: View {
             }
         }
         .padding()
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(Color(.secondarySystemBackground))
-        )
+        .glassyBackground()
     }
 
     private var boostSection: some View {
@@ -166,7 +169,7 @@ struct HomeView: View {
                     .padding(.vertical, 12)
                     .background(
                         Capsule()
-                            .fill(Color.purple.gradient)
+                            .fill(Theme.accentGradient)
                     )
                 }
             }

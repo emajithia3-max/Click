@@ -20,6 +20,7 @@ final class GameStateService: ObservableObject {
     private var syncTimer: Timer?
     private var boostTimer: Timer?
     private var cancellables = Set<AnyCancellable>()
+    private let minimumPrestigeRankIndex = 5
 
     private init() {
         startBoostTimer()
@@ -276,7 +277,7 @@ final class GameStateService: ObservableObject {
 
     var canPrestige: Bool {
         guard let data = seasonData else { return false }
-        return data.rankIndex >= 1
+        return data.rankIndex >= minimumPrestigeRankIndex
     }
 
     var currentRank: Rank {

@@ -27,7 +27,7 @@ struct ShopView: View {
                 }
                 .padding()
             }
-            .background(Color(.systemGroupedBackground))
+            .background(Theme.backgroundGradient.ignoresSafeArea())
             .navigationTitle("Shop")
             .overlay(alignment: .bottom) {
                 if RemoteConfigService.shared.admobRewardedEnabled {
@@ -63,10 +63,7 @@ struct ShopView: View {
             Spacer()
         }
         .padding()
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(Color(.secondarySystemBackground))
-        )
+        .glassyBackground()
     }
 
     private var purchaseResultOverlay: some View {

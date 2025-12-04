@@ -6,18 +6,22 @@ struct PrestigePanel: View {
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 24) {
-                headerSection
+            ScrollView {
+                VStack(spacing: 24) {
+                    headerSection
 
-                multiplierPreview
+                    multiplierPreview
 
-                resetWarning
-
-                Spacer()
-
-                actionButtons
+                    resetWarning
+                }
+                .padding()
             }
-            .padding()
+            .background(Theme.backgroundGradient.ignoresSafeArea())
+            .safeAreaInset(edge: .bottom) {
+                actionButtons
+                    .padding()
+                    .background(.ultraThinMaterial)
+            }
             .navigationTitle("Prestige")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -37,12 +41,12 @@ struct PrestigePanel: View {
         VStack(spacing: 12) {
             ZStack {
                 Circle()
-                    .fill(Color.purple.opacity(0.2))
+                    .fill(Theme.accent.opacity(0.25))
                     .frame(width: 80, height: 80)
 
                 Image(systemName: "arrow.up.circle.fill")
                     .font(.system(size: 48))
-                    .foregroundColor(.purple)
+                    .foregroundColor(Theme.lilac)
             }
 
             Text("Ready to Prestige?")
@@ -82,20 +86,17 @@ struct PrestigePanel: View {
             }
         }
         .padding()
-        .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(Color(.secondarySystemBackground))
-        )
+        .glassyBackground(cornerRadius: 14)
     }
 
     private var resetWarning: some View {
-        HStack(spacing: 8) {
-            Image(systemName: "exclamationmark.triangle.fill")
-                .foregroundColor(.orange)
+            HStack(spacing: 8) {
+                Image(systemName: "exclamationmark.triangle.fill")
+                    .foregroundColor(Theme.lilac)
 
-            Text("Taps, coins, and upgrades will reset")
-                .font(Typography.caption)
-                .foregroundColor(.secondary)
+                Text("Taps, coins, and upgrades will reset")
+                    .font(Typography.caption)
+                    .foregroundColor(.white.opacity(0.7))
         }
     }
 
@@ -115,7 +116,7 @@ struct PrestigePanel: View {
                 .padding()
                 .background(
                     RoundedRectangle(cornerRadius: 12)
-                        .fill(Color.purple.gradient)
+                        .fill(Theme.accentGradient)
                 )
             }
 

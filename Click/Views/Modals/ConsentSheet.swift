@@ -6,20 +6,24 @@ struct ConsentSheet: View {
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 24) {
-                iconSection
+            ScrollView {
+                VStack(spacing: 24) {
+                    iconSection
 
-                titleSection
+                    titleSection
 
-                nameInput
+                    nameInput
 
-                privacyInfo
-
-                Spacer()
-
-                actionButtons
+                    privacyInfo
+                }
+                .padding()
             }
-            .padding()
+            .background(Theme.backgroundGradient.ignoresSafeArea())
+            .safeAreaInset(edge: .bottom) {
+                actionButtons
+                    .padding()
+                    .background(.ultraThinMaterial)
+            }
             .navigationTitle("World Rank")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

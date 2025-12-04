@@ -29,14 +29,18 @@ struct RankProgressView: View {
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
                     RoundedRectangle(cornerRadius: 6)
-                        .fill(Color(.systemGray5))
+                        .fill(Theme.cardBackground)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 6)
+                                .stroke(Theme.cardStroke, lineWidth: 1)
+                        )
 
                     RoundedRectangle(cornerRadius: 6)
                         .fill(
                             LinearGradient(
                                 colors: [
-                                    currentRank.tierColor,
-                                    currentRank.tierColor.opacity(0.7)
+                                    Theme.lilac,
+                                    currentRank.tierColor
                                 ],
                                 startPoint: .leading,
                                 endPoint: .trailing
