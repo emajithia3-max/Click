@@ -12,11 +12,14 @@
 		5E6C73A22EE12D8C003F9EA5 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = PKG_DEP_RC /* FirebaseRemoteConfig */; };
 		5E6C73A32EE12D8C003F9EA5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = PKG_DEP_AN /* FirebaseAnalytics */; };
 		5E6C73A42EE12D8C003F9EA5 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = PKG_DEP_AD /* GoogleMobileAds */; };
+		5E6C73A82EE133FB003F9EA5 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E6C73A52EE133FB003F9EA5 /* Roboto-Bold.ttf */; };
+		5E6C73A92EE133FB003F9EA5 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E6C73A72EE133FB003F9EA5 /* Roboto-Regular.ttf */; };
+		5E6C73AA2EE133FB003F9EA5 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E6C73A62EE133FB003F9EA5 /* Roboto-Medium.ttf */; };
+		5E6C73AE2EE13573003F9EA5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E6C73AD2EE13573003F9EA5 /* GoogleService-Info.plist */; };
 		APP001 /* ClickApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC001 /* ClickApp.swift */; };
 		APP002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC002 /* ContentView.swift */; };
 		APP003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = RES001 /* Assets.xcassets */; };
 		CFG001 /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = RSCFG001 /* RemoteConfigDefaults.plist */; };
-		CFG002 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = RSCFG002 /* GoogleService-Info.plist */; };
 		MOD001 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCMOD001 /* UserModel.swift */; };
 		MOD002 /* SeasonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCMOD002 /* SeasonModel.swift */; };
 		MOD003 /* RankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRCMOD003 /* RankModel.swift */; };
@@ -57,10 +60,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E6C73A52EE133FB003F9EA5 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		5E6C73A62EE133FB003F9EA5 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		5E6C73A72EE133FB003F9EA5 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		5E6C73AD2EE13573003F9EA5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		PROD001 /* Click.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Click.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		RES001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		RSCFG001 /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
-		RSCFG002 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		SRC001 /* ClickApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickApp.swift; sourceTree = "<group>"; };
 		SRC002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		SRCMOD001 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -144,8 +150,8 @@
 		GRP_CFG /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				5E6C73AD2EE13573003F9EA5 /* GoogleService-Info.plist */,
 				RSCFG001 /* RemoteConfigDefaults.plist */,
-				RSCFG002 /* GoogleService-Info.plist */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -174,6 +180,9 @@
 		GRP_RES /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5E6C73A52EE133FB003F9EA5 /* Roboto-Bold.ttf */,
+				5E6C73A62EE133FB003F9EA5 /* Roboto-Medium.ttf */,
+				5E6C73A72EE133FB003F9EA5 /* Roboto-Regular.ttf */,
 				RES001 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -348,9 +357,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E6C73A82EE133FB003F9EA5 /* Roboto-Bold.ttf in Resources */,
+				5E6C73A92EE133FB003F9EA5 /* Roboto-Regular.ttf in Resources */,
+				5E6C73AA2EE133FB003F9EA5 /* Roboto-Medium.ttf in Resources */,
 				APP003 /* Assets.xcassets in Resources */,
 				CFG001 /* RemoteConfigDefaults.plist in Resources */,
-				CFG002 /* GoogleService-Info.plist in Resources */,
+				5E6C73AE2EE13573003F9EA5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
