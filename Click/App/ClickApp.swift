@@ -14,7 +14,7 @@ struct ClickApp: App {
                 .environmentObject(gameState)
                 .environmentObject(authService)
                 .preferredColorScheme(nil)
-                .onChange(of: scenePhase) { _, newPhase in
+                .onChange(of: scenePhase) { newPhase in
                     handleScenePhaseChange(newPhase)
                 }
         }
