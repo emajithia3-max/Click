@@ -14,7 +14,7 @@ struct RankProgressView: View {
 
                 Spacer()
 
-                if currentRank.index < 50 {
+                if currentRank.index < 10 {
                     let nextRank = RankSystem().rank(at: currentRank.index + 1)
                     Text(nextRank.displayName)
                         .font(Typography.caption)
@@ -35,19 +35,17 @@ struct RankProgressView: View {
                                 .stroke(Theme.cardStroke, lineWidth: 1)
                         )
 
-                    RoundedRectangle(cornerRadius: 6)
-                        .fill(
-                            LinearGradient(
-                                colors: [
-                                    Theme.lilac,
-                                    currentRank.tierColor
-                                ],
-                                startPoint: .leading,
-                                endPoint: .trailing
-                            )
-                        )
-                        .frame(width: geometry.size.width * min(max(progress, 0), 1))
-                        .animation(.spring(response: 0.3), value: progress)
+                    LinearGradient(
+                        colors: [
+                            Theme.lilac,
+                            currentRank.tierColor
+                        ],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                    .frame(width: geometry.size.width * min(max(progress, 0), 1))
+                    .clipShape(RoundedRectangle(cornerRadius: 6))
+                    .animation(.spring(response: 0.3), value: progress)
                 }
             }
             .frame(height: 12)

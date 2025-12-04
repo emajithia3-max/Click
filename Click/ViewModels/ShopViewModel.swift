@@ -38,6 +38,10 @@ final class ShopViewModel: ObservableObject {
         gameState.boostState.inventory[.overclock] ?? 0
     }
 
+    var tapsPerSecondLevel: Int {
+        gameState.seasonData?.tapsPerSecondLevel ?? 0
+    }
+
     var shopItems: [ShopItem] {
         ShopItem.allItems
     }
@@ -48,6 +52,8 @@ final class ShopViewModel: ObservableObject {
             return clickMultiplierLevel
         case .offlineMultiplier:
             return offlineMultiplierLevel
+        case .tapsPerSecond:
+            return tapsPerSecondLevel
         case .boostConsumable:
             return overclockCount
         case .cosmetic:

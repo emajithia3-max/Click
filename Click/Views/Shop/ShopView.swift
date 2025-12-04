@@ -29,13 +29,6 @@ struct ShopView: View {
             }
             .background(Theme.backgroundGradient.ignoresSafeArea())
             .navigationTitle("Shop")
-            .overlay(alignment: .bottom) {
-                if RemoteConfigService.shared.admobRewardedEnabled {
-                    AdaptiveBannerAdView()
-                        .frame(height: 50)
-                        .padding(.bottom, 8)
-                }
-            }
             .overlay {
                 if viewModel.showPurchaseResult {
                     purchaseResultOverlay
@@ -45,22 +38,39 @@ struct ShopView: View {
     }
 
     private var coinsHeader: some View {
-        HStack {
-            Image(systemName: "bitcoinsign.circle.fill")
-                .font(.system(size: 32))
-                .foregroundColor(.yellow)
+        VStack(spacing: 12) {
+            HStack {
+                Image(systemName: "bitcoinsign.circle.fill")
+                    .font(.system(size: 32))
+                    .foregroundColor(.yellow)
 
-            VStack(alignment: .leading, spacing: 2) {
-                Text("Your Coins")
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Your Coins")
+                        .font(Typography.caption)
+                        .foregroundColor(.secondary)
+
+                    Text(NumberFormatService.shared.formatCoins(viewModel.coins))
+                        .font(Typography.h1)
+                        .foregroundColor(.primary)
+                }
+
+                Spacer()
+            }
+
+            VStack(alignment: .leading, spacing: 6) {
+                Label("Earn coins by ranking up", systemImage: "arrow.up.circle.fill")
                     .font(Typography.caption)
                     .foregroundColor(.secondary)
 
-                Text(NumberFormatService.shared.formatCoins(viewModel.coins))
-                    .font(Typography.h1)
-                    .foregroundColor(.primary)
-            }
+                Label("Collect offline earnings daily", systemImage: "moon.fill")
+                    .font(Typography.caption)
+                    .foregroundColor(.secondary)
 
-            Spacer()
+                Label("Watch ads for bonus rewards", systemImage: "play.circle.fill")
+                    .font(Typography.caption)
+                    .foregroundColor(.secondary)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
         .padding()
         .glassyBackground()

@@ -5,25 +5,44 @@ struct Rank: Identifiable, Equatable {
     var id: Int { index }
     let index: Int
     let tier: Int
-    let level: Int
     let threshold: Double
 
-    var tierName: String {
-        "Tier \(tier)"
-    }
+    static let tierNames: [String] = [
+        "Bronze",
+        "Silver",
+        "Gold",
+        "Diamond",
+        "Platinum",
+        "Emerald",
+        "Sapphire",
+        "Ruby",
+        "Obsidian",
+        "Cosmic"
+    ]
 
-    var levelNumeral: String {
-        let numerals = ["V", "IV", "III", "II", "I"]
-        guard level >= 1 && level <= 5 else { return "" }
-        return numerals[level - 1]
+    static let tierColors: [Color] = [
+        Color(hex: "CD7F32"),  // Bronze
+        Color(hex: "C0C0C0"),  // Silver
+        Color(hex: "FFD700"),  // Gold
+        Color(hex: "B9F2FF"),  // Diamond
+        Color(hex: "E5E4E2"),  // Platinum
+        Color(hex: "50C878"),  // Emerald
+        Color(hex: "0F52BA"),  // Sapphire
+        Color(hex: "E0115F"),  // Ruby
+        Color(hex: "1A1A2E"),  // Obsidian
+        Color(hex: "9D4EDD")   // Cosmic
+    ]
+
+    var tierName: String {
+        Rank.tierNames[tier - 1]
     }
 
     var displayName: String {
-        "\(tierName) \(levelNumeral)"
+        tierName
     }
 
     var shortName: String {
-        "T\(tier)-\(levelNumeral)"
+        String(tierName.prefix(3)).uppercased()
     }
 
     var tierColor: Color {
@@ -36,31 +55,11 @@ struct Rank: Identifiable, Equatable {
 
     var glowIntensity: Double {
         guard hasGlow else { return 0 }
-        return Double(tier - 5) * 0.15
+        return Double(tier - 5) * 0.2
     }
 
-    static let tierColors: [Color] = [
-        Color(hex: "A3A3A3"),
-        Color(hex: "8BC6EC"),
-        Color(hex: "B08968"),
-        Color(hex: "C0C0C0"),
-        Color(hex: "E6B422"),
-        Color(hex: "9AD1D4"),
-        Color(hex: "6EE7F0"),
-        Color(hex: "7C3AED"),
-        Color(hex: "EF4444"),
-        Color(hex: "22C55E")
-    ]
-
-    static func fromIndex(_ index: Int) -> (tier: Int, level: Int) {
-        let clampedIndex = max(1, min(50, index))
-        let tier = ((clampedIndex - 1) / 5) + 1
-        let level = ((clampedIndex - 1) % 5) + 1
-        return (tier, level)
-    }
-
-    static func toIndex(tier: Int, level: Int) -> Int {
-        ((tier - 1) * 5) + level
+    static func fromIndex(_ index: Int) -> Int {
+        max(1, min(10, index))
     }
 }
 
@@ -73,26 +72,24 @@ struct RankSystem {
     }
 
     func threshold(for rankIndex: Int) -> Double {
-        let index = max(1, min(50, rankIndex))
+        let index = max(1, min(10, rankIndex))
         return coefficients.baseThreshold * pow(coefficients.rankGrowthB, Double(index - 1))
     }
 
     func rank(at index: Int) -> Rank {
-        let clampedIndex = max(1, min(50, index))
-        let (tier, level) = Rank.fromIndex(clampedIndex)
+        let clampedIndex = max(1, min(10, index))
+        let tier = Rank.fromIndex(clampedIndex)
         return Rank(
             index: clampedIndex,
             tier: tier,
-            level: level,
             threshold: threshold(for: clampedIndex)
         )
     }
 
     func currentRank(taps: Double, prestigeCount: Int) -> Rank {
-        let adjustedTaps = taps
-        for index in (1...50).reversed() {
+        for index in (1...10).reversed() {
             let thresh = threshold(for: index, prestigeCount: prestigeCount)
-            if adjustedTaps >= thresh {
+            if taps >= thresh {
                 return rank(at: index)
             }
         }
@@ -107,14 +104,14 @@ struct RankSystem {
 
     func progress(taps: Double, currentRankIndex: Int, prestigeCount: Int) -> Double {
         let currentThresh = currentRankIndex > 1 ? threshold(for: currentRankIndex, prestigeCount: prestigeCount) : 0
-        let nextThresh = currentRankIndex < 50 ? threshold(for: currentRankIndex + 1, prestigeCount: prestigeCount) : threshold(for: 50, prestigeCount: prestigeCount)
+        let nextThresh = currentRankIndex < 10 ? threshold(for: currentRankIndex + 1, prestigeCount: prestigeCount) : threshold(for: 10, prestigeCount: prestigeCount)
         let range = nextThresh - currentThresh
         guard range > 0 else { return 1.0 }
         return min(1.0, max(0, (taps - currentThresh) / range))
     }
 
     func seasonBaseMultiplier(rankIndex: Int, prestigeCount: Int) -> Double {
-        let rankBonus = 1.0 + (Double(rankIndex - 1) * 0.02)
+        let rankBonus = 1.0 + (Double(rankIndex - 1) * 0.10)
         let prestigeBonus = prestigeCount > 0 ? pow(coefficients.prestigeGrowthA, Double(prestigeCount)) : 1.0
         return rankBonus * prestigeBonus
     }
@@ -124,7 +121,7 @@ struct RankSystem {
     }
 
     func allRanks() -> [Rank] {
-        (1...50).map { rank(at: $0) }
+        (1...10).map { rank(at: $0) }
     }
 }
 

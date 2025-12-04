@@ -19,7 +19,7 @@ struct MainTabView: View {
 
             LeaderboardView()
                 .tabItem {
-                    Label("Ranks", systemImage: "trophy.fill")
+                    Label("History", systemImage: "clock.fill")
                 }
                 .tag(2)
         }

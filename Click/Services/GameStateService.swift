@@ -19,6 +19,7 @@ final class GameStateService: ObservableObject {
     private var saveTimer: Timer?
     private var syncTimer: Timer?
     private var boostTimer: Timer?
+    private var autoTapTimer: Timer?
     private var cancellables = Set<AnyCancellable>()
     private let minimumPrestigeRankIndex = 5
 
@@ -40,6 +41,7 @@ final class GameStateService: ObservableObject {
                 self.isLoading = false
                 self.startSaveTimer()
                 self.startSyncTimer()
+                self.startAutoTapTimer()
                 self.checkOfflineEarnings()
                 self.logSessionStart()
             }
@@ -189,6 +191,8 @@ final class GameStateService: ObservableObject {
             currentLevel = data.clickMultiplierLevel
         case .offlineMultiplier:
             currentLevel = data.offlineMultiplierLevel
+        case .tapsPerSecond:
+            currentLevel = data.tapsPerSecondLevel
         case .boostConsumable:
             currentLevel = 0
         case .cosmetic:
@@ -209,6 +213,9 @@ final class GameStateService: ObservableObject {
             data.clickMultiplierLevel = result.newLevel
         case .offlineMultiplier:
             data.offlineMultiplierLevel = result.newLevel
+        case .tapsPerSecond:
+            data.tapsPerSecondLevel = result.newLevel
+            startAutoTapTimer()
         case .boostConsumable:
             let key = item.id
             data.boostInventory[key] = (data.boostInventory[key] ?? 0) + 1
@@ -259,6 +266,7 @@ final class GameStateService: ObservableObject {
         data.coins = 0
         data.clickMultiplierLevel = 1
         data.offlineMultiplierLevel = 1
+        data.tapsPerSecondLevel = 0
         data.rankIndex = 1
         data.prestigeCount = newPrestigeCount
         data.seasonBaseMultiplier = newMultiplier
@@ -268,6 +276,7 @@ final class GameStateService: ObservableObject {
 
         seasonData = data
         boostState = BoostState()
+        startAutoTapTimer()
 
         HapticsService.shared.prestigeConfirm()
         logPrestige(newPrestigeCount - 1)
@@ -301,6 +310,51 @@ final class GameStateService: ObservableObject {
             seasonBaseMultiplier: data.seasonBaseMultiplier,
             temporaryBoostMultiplier: boostState.totalMultiplier
         )
+    }
+
+    var tapsPerSecond: Double {
+        guard let data = seasonData else { return 0 }
+        return Double(data.tapsPerSecondLevel)
+    }
+
+    private func startAutoTapTimer() {
+        autoTapTimer?.invalidate()
+        guard let data = seasonData, data.tapsPerSecondLevel > 0 else {
+            autoTapTimer = nil
+            return
+        }
+        autoTapTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            self?.autoTap()
+        }
+    }
+
+    private func autoTap() {
+        guard var data = seasonData, data.tapsPerSecondLevel > 0 else { return }
+
+        let tapsToAdd = Double(data.tapsPerSecondLevel) * tapValue
+
+        let previousRankIndex = data.rankIndex
+        data.currentSeasonTaps += tapsToAdd
+
+        let currentRank = rankSystem.currentRank(taps: data.currentSeasonTaps, prestigeCount: data.prestigeCount)
+        if currentRank.index > previousRankIndex {
+            data.rankIndex = currentRank.index
+
+            let coinsEarned = EconomyService.shared.coinsForRankUp(newRankIndex: currentRank.index)
+            data.coins += coinsEarned
+
+            data.seasonBaseMultiplier = rankSystem.seasonBaseMultiplier(
+                rankIndex: currentRank.index,
+                prestigeCount: data.prestigeCount
+            )
+
+            newRank = currentRank
+            showRankUp = true
+            HapticsService.shared.rankUp()
+            logRankUp(currentRank.index)
+        }
+
+        seasonData = data
     }
 
     private func startSaveTimer() {
@@ -377,6 +431,7 @@ final class GameStateService: ObservableObject {
         saveTimer?.invalidate()
         syncTimer?.invalidate()
         boostTimer?.invalidate()
+        autoTapTimer?.invalidate()
         saveNow()
         Analytics.logEvent("session_end", parameters: nil)
     }

@@ -41,19 +41,31 @@ struct ShopItem: Identifiable {
     )
 
     static let overclockPack = ShopItem(
-        id: "overclock_pack",
+        id: "overclock",
         name: "Overclock Pack",
         description: "x5 taps for 15 seconds",
         type: .boostConsumable,
         basePrice: 500,
         priceGrowth: 1.0,
-        maxLevel: 1,
+        maxLevel: 99,
         effectPerLevel: 5.0
+    )
+
+    static let tapsPerSecond = ShopItem(
+        id: "taps_per_second",
+        name: "Auto Tapper",
+        description: "+1 tap/second per level",
+        type: .tapsPerSecond,
+        basePrice: 200,
+        priceGrowth: 1.8,
+        maxLevel: 50,
+        effectPerLevel: 1.0
     )
 
     static let allItems: [ShopItem] = [
         .clickMultiplier,
         .offlineMultiplier,
+        .tapsPerSecond,
         .overclockPack
     ]
 }
@@ -61,6 +73,7 @@ struct ShopItem: Identifiable {
 enum ShopItemType {
     case clickMultiplier
     case offlineMultiplier
+    case tapsPerSecond
     case boostConsumable
     case cosmetic
 }

@@ -94,6 +94,10 @@ final class HomeViewModel: ObservableObject {
         !activeBoosts.isEmpty
     }
 
+    var tapsPerSecond: Double {
+        gameState.tapsPerSecond
+    }
+
     func handleTap(at position: CGPoint) {
         let value = tapValue
         gameState.tap()
