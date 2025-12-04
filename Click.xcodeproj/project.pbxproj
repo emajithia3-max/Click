@@ -16,6 +16,7 @@
 		5E6C73A92EE133FB003F9EA5 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E6C73A72EE133FB003F9EA5 /* Roboto-Regular.ttf */; };
 		5E6C73AA2EE133FB003F9EA5 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E6C73A62EE133FB003F9EA5 /* Roboto-Medium.ttf */; };
 		5E6C73AE2EE13573003F9EA5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E6C73AD2EE13573003F9EA5 /* GoogleService-Info.plist */; };
+		5E6C73B02EE14066003F9EA5 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6C73AF2EE14066003F9EA5 /* Theme.swift */; };
 		APP001 /* ClickApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC001 /* ClickApp.swift */; };
 		APP002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC002 /* ContentView.swift */; };
 		APP003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = RES001 /* Assets.xcassets */; };
@@ -64,6 +65,7 @@
 		5E6C73A62EE133FB003F9EA5 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		5E6C73A72EE133FB003F9EA5 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		5E6C73AD2EE13573003F9EA5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5E6C73AF2EE14066003F9EA5 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		PROD001 /* Click.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Click.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		RES001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		RSCFG001 /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 		ROOT = {
 			isa = PBXGroup;
 			children = (
+				5E6C73AF2EE14066003F9EA5 /* Theme.swift */,
 				GRP001 /* Click */,
 				GRP_PROD /* Products */,
 			);
@@ -390,6 +393,7 @@
 				SRV007 /* NumberFormatService.swift in Sources */,
 				SRV008 /* SeasonService.swift in Sources */,
 				SRV009 /* GameStateService.swift in Sources */,
+				5E6C73B02EE14066003F9EA5 /* Theme.swift in Sources */,
 				VW001 /* HomeView.swift in Sources */,
 				VW002 /* TapButton.swift in Sources */,
 				VW003 /* FloatingTapLabel.swift in Sources */,
