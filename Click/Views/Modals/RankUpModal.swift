@@ -7,7 +7,8 @@ struct RankUpModal: View {
 
     var body: some View {
         ZStack {
-            Color.black.opacity(0.3)
+            Theme.backgroundGradient
+                .opacity(0.9)
                 .ignoresSafeArea()
                 .onTapGesture {
                     dismiss()
@@ -27,8 +28,12 @@ struct RankUpModal: View {
             .padding(32)
             .background(
                 RoundedRectangle(cornerRadius: 24)
-                    .fill(Color(.systemBackground))
-                    .shadow(radius: 20)
+                    .fill(Theme.cardBackground)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 24)
+                            .stroke(Theme.cardStroke, lineWidth: 1)
+                    )
+                    .shadow(color: rank.tierColor.opacity(0.4), radius: 30, x: 0, y: 12)
             )
             .padding(32)
         }
@@ -91,7 +96,11 @@ struct RankUpModal: View {
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 12)
-                .fill(Color(.secondarySystemBackground))
+                .fill(Theme.cardBackground)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(Theme.cardStroke, lineWidth: 1)
+                )
         )
     }
 
@@ -106,7 +115,7 @@ struct RankUpModal: View {
                 .padding()
                 .background(
                     RoundedRectangle(cornerRadius: 12)
-                        .fill(rank.tierColor.gradient)
+                        .fill(Theme.accentGradient)
                 )
         }
     }

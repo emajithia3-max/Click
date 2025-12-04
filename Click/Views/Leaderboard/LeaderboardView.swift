@@ -14,7 +14,7 @@ struct LeaderboardView: View {
 
                 tabContent
             }
-            .background(Color(.systemGroupedBackground))
+            .background(Theme.backgroundGradient.ignoresSafeArea())
             .navigationTitle("Leaderboard")
             .task {
                 await viewModel.loadLeaderboard()
@@ -37,7 +37,7 @@ struct LeaderboardView: View {
             HStack {
                 Text("World Rank")
                     .font(Typography.h2)
-                    .foregroundColor(.primary)
+                    .foregroundColor(.white.opacity(0.9))
 
                 Spacer()
 
@@ -53,11 +53,11 @@ struct LeaderboardView: View {
             } else {
                 Text("Enable to see your global position")
                     .font(Typography.caption)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(Theme.lilac.opacity(0.7))
             }
         }
         .padding()
-        .background(Color(.secondarySystemBackground))
+        .glassyBackground()
     }
 
     private var tabPicker: some View {

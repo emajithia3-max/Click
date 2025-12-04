@@ -20,6 +20,7 @@ struct PrestigeModal: View {
                 buttonSection
             }
             .padding()
+            .background(Theme.backgroundGradient.ignoresSafeArea())
             .navigationTitle("Prestige")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -63,44 +64,41 @@ struct PrestigeModal: View {
                 VStack(spacing: 4) {
                     Text("Current")
                         .font(Typography.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.white.opacity(0.7))
 
                     Text(NumberFormatService.shared.formatMultiplier(
                         gameState.seasonData?.seasonBaseMultiplier ?? 1.0
                     ))
                     .font(Typography.h2)
-                    .foregroundColor(.primary)
+                    .foregroundColor(.white)
                 }
 
                 Image(systemName: "arrow.right")
                     .font(.system(size: 24))
-                    .foregroundColor(.purple)
+                    .foregroundColor(Theme.lilac)
                     .padding(.horizontal)
 
                 VStack(spacing: 4) {
                     Text("After Prestige")
                         .font(Typography.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.white.opacity(0.7))
 
                     Text(NumberFormatService.shared.formatMultiplier(
                         projectedMultiplier
                     ))
                     .font(Typography.h2)
-                    .foregroundColor(.green)
+                    .foregroundColor(Theme.lilac)
                 }
             }
             .padding()
-            .background(
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(.secondarySystemBackground))
-            )
+            .glassyBackground(cornerRadius: 14)
 
             HStack {
                 Image(systemName: "star.fill")
-                    .foregroundColor(.yellow)
+                    .foregroundColor(Theme.lilac)
                 Text("Prestige \((gameState.seasonData?.prestigeCount ?? 0) + 1)")
                     .font(Typography.body)
-                    .foregroundColor(.primary)
+                    .foregroundColor(.white)
             }
         }
     }
@@ -109,7 +107,7 @@ struct PrestigeModal: View {
         VStack(alignment: .leading, spacing: 8) {
             Label("What will reset:", systemImage: "exclamationmark.triangle.fill")
                 .font(Typography.body)
-                .foregroundColor(.orange)
+                .foregroundColor(Theme.lilac)
 
             VStack(alignment: .leading, spacing: 4) {
                 resetItem("Current season taps")
@@ -120,20 +118,17 @@ struct PrestigeModal: View {
             .padding(.leading)
         }
         .padding()
-        .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(Color.orange.opacity(0.1))
-        )
+        .glassyBackground(cornerRadius: 14)
     }
 
     private func resetItem(_ text: String) -> some View {
         HStack(spacing: 8) {
             Image(systemName: "minus.circle.fill")
                 .font(.system(size: 12))
-                .foregroundColor(.red)
+                .foregroundColor(Theme.lilac)
             Text(text)
                 .font(Typography.caption)
-                .foregroundColor(.secondary)
+                .foregroundColor(.white.opacity(0.7))
         }
     }
 
@@ -145,13 +140,13 @@ struct PrestigeModal: View {
             } label: {
                 Text("Confirm Prestige")
                     .font(Typography.button)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 12)
-                            .fill(Color.purple.gradient)
-                    )
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Theme.accentGradient)
+                )
             }
 
             Button {
