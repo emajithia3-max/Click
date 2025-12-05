@@ -114,11 +114,14 @@ struct WorldRankState {
     }
 
     var rankDisplayText: String {
-        if let rank = userRank {
+        if let rank = userRank, rank > 0 {
             return "#\(NumberFormatService.shared.format(Double(rank)))"
         }
-        let percentileText = Int(userPercentile * 100)
-        return "Top \(100 - percentileText)%"
+        return "N/A"
+    }
+
+    var effectiveTotalPlayers: Int {
+        max(1, totalPlayers)
     }
 }
 

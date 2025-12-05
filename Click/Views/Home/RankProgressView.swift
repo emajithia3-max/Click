@@ -14,7 +14,7 @@ struct RankProgressView: View {
 
                 Spacer()
 
-                if currentRank.index < 10 {
+                if currentRank.index < Rank.maxTier {
                     let nextRank = RankSystem().rank(at: currentRank.index + 1)
                     Text(nextRank.displayName)
                         .font(Typography.caption)
@@ -30,12 +30,8 @@ struct RankProgressView: View {
                 ZStack(alignment: .leading) {
                     RoundedRectangle(cornerRadius: 6)
                         .fill(Theme.cardBackground)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 6)
-                                .stroke(Theme.cardStroke, lineWidth: 1)
-                        )
 
-                    if progress > 0 {
+                    if progress > 0.01 {
                         LinearGradient(
                             colors: [
                                 Theme.lilac,
@@ -44,11 +40,15 @@ struct RankProgressView: View {
                             startPoint: .leading,
                             endPoint: .trailing
                         )
-                        .frame(width: geometry.size.width * min(max(progress, 0), 1))
-                        .clipShape(RoundedRectangle(cornerRadius: 6))
+                        .frame(width: max(12, geometry.size.width * min(max(progress, 0), 1)))
                         .animation(.spring(response: 0.3), value: progress)
                     }
                 }
+                .clipShape(RoundedRectangle(cornerRadius: 6))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 6)
+                        .stroke(Theme.cardStroke, lineWidth: 1)
+                )
             }
             .frame(height: 12)
 

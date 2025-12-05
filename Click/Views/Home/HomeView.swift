@@ -12,7 +12,7 @@ struct HomeView: View {
 
                 VStack(spacing: 0) {
                     worldRankHero
-                        .padding(.horizontal)
+                        .padding(.horizontal, 8)
                         .padding(.top, 8)
 
                     headerSection
@@ -22,9 +22,10 @@ struct HomeView: View {
                     Spacer()
 
                     tapSection
-                        .padding(.bottom, 24)
+                        .padding(.bottom, 40)
 
                     Spacer()
+                        .frame(minHeight: 16)
 
                     statsSection
                         .padding(.horizontal)
@@ -46,15 +47,21 @@ struct HomeView: View {
             .fullScreenCover(isPresented: $leaderboardViewModel.showConsentSheet) {
                 WorldRankSetupView(viewModel: leaderboardViewModel)
             }
-            .alert("Ad Rush", isPresented: $viewModel.showAdRushExplanation) {
-                Button("Watch Ad") {
-                    viewModel.confirmAdRush()
-                }
-                Button("Not Now", role: .cancel) {
-                    viewModel.declineAdRush()
-                }
-            } message: {
-                Text("Watch a short ad to get a 2x tap multiplier for 30 seconds!")
+            .sheet(isPresented: $viewModel.showAdRushExplanation) {
+                AdRushExplanationView(
+                    onConfirm: { viewModel.confirmAdRush() },
+                    onDecline: { viewModel.declineAdRush() }
+                )
+                .presentationDetents([.height(400)])
+                .presentationDragIndicator(.visible)
+            }
+            .sheet(isPresented: $viewModel.showAdConsent) {
+                AdConsentView(
+                    onAccept: { viewModel.onAdConsentComplete() },
+                    onDecline: { viewModel.onAdConsentComplete() }
+                )
+                .presentationDetents([.height(450)])
+                .presentationDragIndicator(.visible)
             }
             .task {
                 await leaderboardViewModel.loadLeaderboard()
@@ -87,7 +94,7 @@ struct HomeView: View {
                     Spacer()
 
                     VStack(alignment: .trailing, spacing: 4) {
-                        Text("of \(NumberFormatService.shared.format(Double(leaderboardViewModel.worldRankState.totalPlayers)))")
+                        Text("of \(NumberFormatService.shared.format(Double(leaderboardViewModel.worldRankState.effectiveTotalPlayers)))")
                             .font(Typography.caption)
                             .foregroundColor(.secondary)
 

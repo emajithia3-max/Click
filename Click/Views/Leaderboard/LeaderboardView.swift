@@ -2,6 +2,7 @@ import SwiftUI
 
 struct LeaderboardView: View {
     @StateObject private var viewModel = LeaderboardViewModel()
+    @State private var showSettings = false
 
     var body: some View {
         NavigationStack {
@@ -11,7 +12,17 @@ struct LeaderboardView: View {
                 tabContent
             }
             .background(Theme.backgroundGradient.ignoresSafeArea())
-            .navigationTitle("History")
+            .navigationTitle("Profile")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        showSettings = true
+                    } label: {
+                        Image(systemName: "gearshape.fill")
+                            .foregroundColor(.secondary)
+                    }
+                }
+            }
             .task {
                 await viewModel.loadLeaderboard()
             }
@@ -23,6 +34,9 @@ struct LeaderboardView: View {
             }
             .fullScreenCover(isPresented: $viewModel.showConsentSheet) {
                 WorldRankSetupView(viewModel: viewModel)
+            }
+            .sheet(isPresented: $showSettings) {
+                SettingsView(leaderboardViewModel: viewModel)
             }
         }
     }

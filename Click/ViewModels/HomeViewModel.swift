@@ -8,6 +8,8 @@ final class HomeViewModel: ObservableObject {
     @Published var showPrestigePanel = false
     @Published var prestigePopupDismissed = false
     @Published var showAdRushExplanation = false
+    @Published var showAdConsent = false
+    private var pendingAdRushAfterConsent = false
 
     private var cancellables = Set<AnyCancellable>()
     private let gameState = GameStateService.shared
@@ -202,10 +204,25 @@ final class HomeViewModel: ObservableObject {
     }
 
     func onAdRushTapped() {
-        if !hasSeenAdRushExplanation {
+        if !SettingsManager.shared.hasSeenAdConsent {
+            pendingAdRushAfterConsent = true
+            showAdConsent = true
+        } else if !hasSeenAdRushExplanation {
             showAdRushExplanation = true
         } else {
             activateAdRush()
+        }
+    }
+
+    func onAdConsentComplete() {
+        showAdConsent = false
+        if pendingAdRushAfterConsent {
+            pendingAdRushAfterConsent = false
+            if !hasSeenAdRushExplanation {
+                showAdRushExplanation = true
+            } else {
+                activateAdRush()
+            }
         }
     }
 

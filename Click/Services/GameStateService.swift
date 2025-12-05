@@ -21,7 +21,7 @@ final class GameStateService: ObservableObject {
     private var boostTimer: Timer?
     private var autoTapTimer: Timer?
     private var cancellables = Set<AnyCancellable>()
-    private let minimumPrestigeRankIndex = 10
+    private let minimumPrestigeRankIndex = 50
 
     private init() {
         startBoostTimer()

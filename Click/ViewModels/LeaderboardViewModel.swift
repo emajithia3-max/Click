@@ -177,6 +177,15 @@ final class LeaderboardViewModel: ObservableObject {
         }
     }
 
+    func optOut() {
+        Task {
+            await setOptIn(false, displayName: nil)
+            await MainActor.run {
+                self.stopRealtimeUpdates()
+            }
+        }
+    }
+
     func confirmOptIn() {
         hasSeenConsent = true
         Task {
