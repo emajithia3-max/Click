@@ -6,16 +6,12 @@ struct LeaderboardView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                if viewModel.worldRankEnabled {
-                    worldRankSection
-                }
-
                 tabPicker
 
                 tabContent
             }
             .background(Theme.backgroundGradient.ignoresSafeArea())
-            .navigationTitle("Leaderboard")
+            .navigationTitle("History")
             .task {
                 await viewModel.loadLeaderboard()
             }
@@ -25,39 +21,10 @@ struct LeaderboardView: View {
             .onDisappear {
                 viewModel.stopRealtimeUpdates()
             }
-            .sheet(isPresented: $viewModel.showConsentSheet) {
-                ConsentSheet(viewModel: viewModel)
-                    .presentationDetents([.medium])
+            .fullScreenCover(isPresented: $viewModel.showConsentSheet) {
+                WorldRankSetupView(viewModel: viewModel)
             }
         }
-    }
-
-    private var worldRankSection: some View {
-        VStack(spacing: 12) {
-            HStack {
-                Text("World Rank")
-                    .font(Typography.h2)
-                    .foregroundColor(.white.opacity(0.9))
-
-                Spacer()
-
-                Toggle("", isOn: Binding(
-                    get: { viewModel.isOptedIn },
-                    set: { _ in viewModel.toggleOptIn() }
-                ))
-                .labelsHidden()
-            }
-
-            if viewModel.isOptedIn {
-                WorldRankSlider(state: viewModel.worldRankState)
-            } else {
-                Text("Enable to see your global position")
-                    .font(Typography.caption)
-                    .foregroundColor(Theme.lilac.opacity(0.7))
-            }
-        }
-        .padding()
-        .glassyBackground()
     }
 
     private var tabPicker: some View {
@@ -75,8 +42,6 @@ struct LeaderboardView: View {
         switch viewModel.selectedTab {
         case .global:
             globalLeaderboard
-        case .friends:
-            friendsPlaceholder
         case .lifetime:
             lifetimeView
         }
@@ -165,25 +130,6 @@ struct LeaderboardView: View {
                 .font(Typography.body)
                 .foregroundColor(.secondary)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-    }
-
-    private var friendsPlaceholder: some View {
-        VStack(spacing: 16) {
-            Image(systemName: "person.2")
-                .font(.system(size: 48))
-                .foregroundColor(.secondary)
-
-            Text("Coming Soon")
-                .font(Typography.h2)
-                .foregroundColor(.primary)
-
-            Text("Friend leaderboards will be available in a future update")
-                .font(Typography.body)
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.center)
-        }
-        .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 

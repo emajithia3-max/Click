@@ -2,6 +2,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
+    @StateObject private var leaderboardViewModel = LeaderboardViewModel()
     @EnvironmentObject var gameState: GameStateService
 
     var body: some View {
@@ -10,6 +11,10 @@ struct HomeView: View {
                 backgroundGradient
 
                 VStack(spacing: 0) {
+                    worldRankHero
+                        .padding(.horizontal)
+                        .padding(.top, 8)
+
                     headerSection
                         .padding(.horizontal)
                         .padding(.top, 8)
@@ -36,7 +41,72 @@ struct HomeView: View {
                 PrestigePanel(viewModel: viewModel)
                     .presentationDetents([.medium])
             }
+            .fullScreenCover(isPresented: $leaderboardViewModel.showConsentSheet) {
+                WorldRankSetupView(viewModel: leaderboardViewModel)
+            }
+            .task {
+                await leaderboardViewModel.loadLeaderboard()
+            }
+            .onAppear {
+                leaderboardViewModel.startRealtimeUpdates()
+            }
+            .onDisappear {
+                leaderboardViewModel.stopRealtimeUpdates()
+            }
         }
+    }
+
+    private var worldRankHero: some View {
+        VStack(spacing: 8) {
+            if leaderboardViewModel.isOptedIn {
+                HStack {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("WORLD RANK")
+                            .font(.custom("Roboto-Bold", size: 12))
+                            .foregroundColor(Theme.lilac.opacity(0.7))
+                            .tracking(2)
+
+                        Text(leaderboardViewModel.worldRankState.rankDisplayText)
+                            .font(.custom("Roboto-Bold", size: 36))
+                            .foregroundColor(.white)
+                    }
+
+                    Spacer()
+
+                    VStack(alignment: .trailing, spacing: 4) {
+                        Text("of \(NumberFormatService.shared.format(Double(leaderboardViewModel.worldRankState.totalPlayers)))")
+                            .font(Typography.caption)
+                            .foregroundColor(.secondary)
+
+                        Text("players")
+                            .font(Typography.caption)
+                            .foregroundColor(.secondary)
+                    }
+                }
+            } else if leaderboardViewModel.worldRankEnabled {
+                Button {
+                    leaderboardViewModel.showConsentSheet = true
+                } label: {
+                    HStack {
+                        Image(systemName: "globe")
+                            .font(.system(size: 24))
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("WORLD RANK")
+                                .font(.custom("Roboto-Bold", size: 14))
+                            Text("Tap to join the global leaderboard")
+                                .font(Typography.caption)
+                                .foregroundColor(.secondary)
+                        }
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(.secondary)
+                    }
+                    .foregroundColor(.white)
+                }
+            }
+        }
+        .padding()
+        .glassyBackground()
     }
 
     private var backgroundGradient: some View {
@@ -119,17 +189,26 @@ struct HomeView: View {
                 )
 
                 StatRow(
-                    title: "Lifetime",
-                    value: NumberFormatService.shared.formatTaps(viewModel.lifetimeTaps),
-                    icon: "infinity"
-                )
-
-                StatRow(
                     title: "Multiplier",
                     value: NumberFormatService.shared.formatMultiplier(viewModel.seasonMultiplier * viewModel.boostMultiplier),
                     icon: "multiply.circle",
                     highlight: viewModel.hasActiveBoost
                 )
+
+                if viewModel.tapsPerSecond > 0 {
+                    StatRow(
+                        title: "Taps/Sec",
+                        value: NumberFormatService.shared.format(viewModel.tapsPerSecond),
+                        icon: "bolt.fill",
+                        highlight: true
+                    )
+                } else {
+                    StatRow(
+                        title: "Lifetime",
+                        value: NumberFormatService.shared.formatTaps(viewModel.lifetimeTaps),
+                        icon: "infinity"
+                    )
+                }
             }
 
             HStack {

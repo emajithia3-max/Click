@@ -31,6 +31,7 @@ struct SeasonUserData: Codable {
     var coins: Double
     var clickMultiplierLevel: Int
     var offlineMultiplierLevel: Int
+    var tapsPerSecondLevel: Int
     var rankIndex: Int
     var prestigeCount: Int
     var seasonBaseMultiplier: Double
@@ -44,6 +45,7 @@ struct SeasonUserData: Codable {
         coins: Double = 0,
         clickMultiplierLevel: Int = 1,
         offlineMultiplierLevel: Int = 1,
+        tapsPerSecondLevel: Int = 0,
         rankIndex: Int = 1,
         prestigeCount: Int = 0,
         seasonBaseMultiplier: Double = 1.0,
@@ -56,6 +58,7 @@ struct SeasonUserData: Codable {
         self.coins = coins
         self.clickMultiplierLevel = clickMultiplierLevel
         self.offlineMultiplierLevel = offlineMultiplierLevel
+        self.tapsPerSecondLevel = tapsPerSecondLevel
         self.rankIndex = rankIndex
         self.prestigeCount = prestigeCount
         self.seasonBaseMultiplier = seasonBaseMultiplier
@@ -71,6 +74,7 @@ struct SeasonUserData: Codable {
             "coins": coins,
             "clickMultiplierLevel": clickMultiplierLevel,
             "offlineMultiplierLevel": offlineMultiplierLevel,
+            "tapsPerSecondLevel": tapsPerSecondLevel,
             "rankIndex": rankIndex,
             "prestigeCount": prestigeCount,
             "seasonBaseMultiplier": seasonBaseMultiplier,
@@ -92,6 +96,7 @@ struct SeasonUserData: Codable {
             coins: data["coins"] as? Double ?? 0,
             clickMultiplierLevel: data["clickMultiplierLevel"] as? Int ?? 1,
             offlineMultiplierLevel: data["offlineMultiplierLevel"] as? Int ?? 1,
+            tapsPerSecondLevel: data["tapsPerSecondLevel"] as? Int ?? 0,
             rankIndex: data["rankIndex"] as? Int ?? 1,
             prestigeCount: data["prestigeCount"] as? Int ?? 0,
             seasonBaseMultiplier: data["seasonBaseMultiplier"] as? Double ?? 1.0,

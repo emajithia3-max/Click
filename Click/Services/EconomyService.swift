@@ -94,12 +94,15 @@ final class EconomyService: ObservableObject {
     }
 
     func effectDescription(_ item: ShopItem, level: Int) -> String {
-        let effect = item.effect(at: level)
         switch item.type {
         case .clickMultiplier:
+            let effect = item.effect(at: level)
             return "x\(String(format: "%.1f", effect)) tap power"
         case .offlineMultiplier:
+            let effect = item.effect(at: level)
             return "x\(String(format: "%.1f", effect)) offline rate"
+        case .tapsPerSecond:
+            return "\(level) tap\(level == 1 ? "" : "s")/sec"
         case .boostConsumable:
             return "x\(Int(item.effectPerLevel)) taps"
         case .cosmetic:
@@ -109,12 +112,16 @@ final class EconomyService: ObservableObject {
 
     func nextEffectDescription(_ item: ShopItem, currentLevel: Int) -> String {
         guard currentLevel < item.maxLevel else { return "Max Level" }
-        let nextEffect = item.effect(at: currentLevel + 1)
         switch item.type {
         case .clickMultiplier:
+            let nextEffect = item.effect(at: currentLevel + 1)
             return "x\(String(format: "%.1f", nextEffect)) tap power"
         case .offlineMultiplier:
+            let nextEffect = item.effect(at: currentLevel + 1)
             return "x\(String(format: "%.1f", nextEffect)) offline rate"
+        case .tapsPerSecond:
+            let nextLevel = currentLevel + 1
+            return "\(nextLevel) tap\(nextLevel == 1 ? "" : "s")/sec"
         case .boostConsumable:
             return "+1 charge"
         case .cosmetic:
