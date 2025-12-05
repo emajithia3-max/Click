@@ -32,7 +32,7 @@ struct WorldRankSetupView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        dismiss()
+                        viewModel.declineOptIn()
                     } label: {
                         Image(systemName: "xmark.circle.fill")
                             .font(.system(size: 28))
@@ -173,7 +173,7 @@ struct WorldRankSetupView: View {
             }
 
             Button {
-                dismiss()
+                viewModel.declineOptIn()
             } label: {
                 Text("Maybe Later")
                     .font(Typography.button)

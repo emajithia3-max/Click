@@ -47,9 +47,14 @@ final class SeasonService: ObservableObject {
 
     private func startSeasonTimer() {
         timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in
-            self?.checkSeasonStatus()
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            self?.tickTimer()
         }
+    }
+
+    private func tickTimer() {
+        objectWillChange.send()
+        checkSeasonStatus()
     }
 
     private func checkSeasonStatus() {

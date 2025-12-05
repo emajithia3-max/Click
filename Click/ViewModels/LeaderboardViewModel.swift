@@ -13,9 +13,27 @@ final class LeaderboardViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private var updateTimer: Timer?
     private let gameState = GameStateService.shared
+    private static let hasSeenConsentKey = "hasSeenLeaderboardConsent"
+
+    var hasSeenConsent: Bool {
+        get { UserDefaults.standard.bool(forKey: Self.hasSeenConsentKey) }
+        set { UserDefaults.standard.set(newValue, forKey: Self.hasSeenConsentKey) }
+    }
 
     init() {
         setupBindings()
+    }
+
+    func checkFirstLaunchConsent() {
+        guard worldRankEnabled && !isOptedIn && !hasSeenConsent else { return }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            self?.showConsentSheet = true
+        }
+    }
+
+    func declineOptIn() {
+        hasSeenConsent = true
+        showConsentSheet = false
     }
 
     private func setupBindings() {
@@ -122,9 +140,10 @@ final class LeaderboardViewModel: ObservableObject {
 
         let crossedThreshold = hasPercentileCrossed(from: previousPercentile, to: newPercentile)
 
+        let calculatedRank = userEntry?.position ?? leaderboardData.approximateRank(for: currentTaps)
         worldRankState = WorldRankState(
             isEnabled: true,
-            userRank: userEntry?.position,
+            userRank: calculatedRank,
             userPercentile: newPercentile,
             totalPlayers: leaderboardData.totalPlayers
         )
@@ -159,6 +178,7 @@ final class LeaderboardViewModel: ObservableObject {
     }
 
     func confirmOptIn() {
+        hasSeenConsent = true
         Task {
             await setOptIn(true, displayName: displayName.isEmpty ? nil : displayName)
             await MainActor.run {

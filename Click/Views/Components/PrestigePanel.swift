@@ -27,7 +27,7 @@ struct PrestigePanel: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        dismiss()
+                        viewModel.dismissPrestigePopup()
                     } label: {
                         Image(systemName: "xmark.circle.fill")
                             .foregroundColor(.secondary)
@@ -62,7 +62,7 @@ struct PrestigePanel: View {
     private var multiplierPreview: some View {
         HStack(spacing: 20) {
             VStack(spacing: 4) {
-                Text("Current")
+                Text("Base")
                     .font(Typography.caption)
                     .foregroundColor(.secondary)
 
@@ -121,7 +121,7 @@ struct PrestigePanel: View {
             }
 
             Button {
-                dismiss()
+                viewModel.dismissPrestigePopup()
             } label: {
                 Text("Keep Playing")
                     .font(Typography.button)

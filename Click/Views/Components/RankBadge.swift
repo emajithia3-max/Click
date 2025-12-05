@@ -39,7 +39,7 @@ struct RankBadge: View {
                     .font(.system(size: size.iconSize, weight: .bold))
             }
 
-            Text(rank.shortName)
+            Text(rank.tierName)
                 .font(.custom("Roboto-Bold", size: size.fontSize))
         }
         .foregroundColor(.white)

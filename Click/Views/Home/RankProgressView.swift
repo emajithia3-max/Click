@@ -35,17 +35,19 @@ struct RankProgressView: View {
                                 .stroke(Theme.cardStroke, lineWidth: 1)
                         )
 
-                    LinearGradient(
-                        colors: [
-                            Theme.lilac,
-                            currentRank.tierColor
-                        ],
-                        startPoint: .leading,
-                        endPoint: .trailing
-                    )
-                    .frame(width: geometry.size.width * min(max(progress, 0), 1))
-                    .clipShape(RoundedRectangle(cornerRadius: 6))
-                    .animation(.spring(response: 0.3), value: progress)
+                    if progress > 0 {
+                        LinearGradient(
+                            colors: [
+                                Theme.lilac,
+                                currentRank.tierColor
+                            ],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                        .frame(width: geometry.size.width * min(max(progress, 0), 1))
+                        .clipShape(RoundedRectangle(cornerRadius: 6))
+                        .animation(.spring(response: 0.3), value: progress)
+                    }
                 }
             }
             .frame(height: 12)

@@ -34,13 +34,16 @@ struct Season: Codable, Identifiable {
         let days = Int(remaining / 86400)
         let hours = Int((remaining.truncatingRemainder(dividingBy: 86400)) / 3600)
         let minutes = Int((remaining.truncatingRemainder(dividingBy: 3600)) / 60)
+        let seconds = Int(remaining.truncatingRemainder(dividingBy: 60))
 
         if days > 0 {
-            return "\(days)d \(hours)h"
+            return "\(days)d \(hours)h \(minutes)m \(seconds)s"
         } else if hours > 0 {
-            return "\(hours)h \(minutes)m"
+            return "\(hours)h \(minutes)m \(seconds)s"
+        } else if minutes > 0 {
+            return "\(minutes)m \(seconds)s"
         } else {
-            return "\(minutes)m"
+            return "\(seconds)s"
         }
     }
 

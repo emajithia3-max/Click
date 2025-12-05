@@ -22,6 +22,7 @@ struct HomeView: View {
                     Spacer()
 
                     tapSection
+                        .padding(.bottom, 24)
 
                     Spacer()
 
@@ -39,16 +40,28 @@ struct HomeView: View {
             .navigationBarTitleDisplayMode(.inline)
             .sheet(isPresented: $viewModel.showPrestigePanel) {
                 PrestigePanel(viewModel: viewModel)
-                    .presentationDetents([.medium])
+                    .presentationDetents([.height(400)])
+                    .presentationDragIndicator(.visible)
             }
             .fullScreenCover(isPresented: $leaderboardViewModel.showConsentSheet) {
                 WorldRankSetupView(viewModel: leaderboardViewModel)
+            }
+            .alert("Ad Rush", isPresented: $viewModel.showAdRushExplanation) {
+                Button("Watch Ad") {
+                    viewModel.confirmAdRush()
+                }
+                Button("Not Now", role: .cancel) {
+                    viewModel.declineAdRush()
+                }
+            } message: {
+                Text("Watch a short ad to get a 2x tap multiplier for 30 seconds!")
             }
             .task {
                 await leaderboardViewModel.loadLeaderboard()
             }
             .onAppear {
                 leaderboardViewModel.startRealtimeUpdates()
+                leaderboardViewModel.checkFirstLaunchConsent()
             }
             .onDisappear {
                 leaderboardViewModel.stopRealtimeUpdates()
@@ -84,24 +97,33 @@ struct HomeView: View {
                     }
                 }
             } else if leaderboardViewModel.worldRankEnabled {
-                Button {
-                    leaderboardViewModel.showConsentSheet = true
-                } label: {
-                    HStack {
-                        Image(systemName: "globe")
-                            .font(.system(size: 24))
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("WORLD RANK")
-                                .font(.custom("Roboto-Bold", size: 14))
-                            Text("Tap to join the global leaderboard")
-                                .font(Typography.caption)
-                                .foregroundColor(.secondary)
-                        }
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .foregroundColor(.secondary)
+                HStack {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("WORLD RANK")
+                            .font(.custom("Roboto-Bold", size: 12))
+                            .foregroundColor(Theme.lilac.opacity(0.7))
+                            .tracking(2)
+
+                        Text("--")
+                            .font(.custom("Roboto-Bold", size: 36))
+                            .foregroundColor(.white.opacity(0.5))
                     }
-                    .foregroundColor(.white)
+
+                    Spacer()
+
+                    Button {
+                        leaderboardViewModel.showConsentSheet = true
+                    } label: {
+                        Text("Turn on")
+                            .font(Typography.button)
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 8)
+                            .background(
+                                Capsule()
+                                    .fill(Color.blue.gradient)
+                            )
+                    }
                 }
             }
         }
@@ -144,7 +166,7 @@ struct HomeView: View {
 
                 RankBadge(rank: viewModel.currentRank)
                     .onTapGesture {
-                        if viewModel.canPrestige {
+                        if viewModel.shouldShowPrestigeButton {
                             viewModel.showPrestigePanel = true
                         }
                     }
@@ -176,6 +198,12 @@ struct HomeView: View {
                 .frame(width: min(geometry.size.width - 80, 280), height: min(geometry.size.width - 80, 280))
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .onAppear {
+                viewModel.autoTapCenterPosition = CGPoint(
+                    x: geometry.frame(in: .global).midX,
+                    y: geometry.frame(in: .global).midY - 100
+                )
+            }
         }
     }
 
@@ -231,10 +259,10 @@ struct HomeView: View {
                 cooldownText: viewModel.adRushCooldownRemaining(),
                 activeBoost: viewModel.activeBoosts.first { $0.type == .adRush }
             ) {
-                viewModel.activateAdRush()
+                viewModel.onAdRushTapped()
             }
 
-            if viewModel.canPrestige {
+            if viewModel.shouldShowPrestigeButton {
                 Button {
                     viewModel.showPrestigePanel = true
                 } label: {
