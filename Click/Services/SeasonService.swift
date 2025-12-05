@@ -35,11 +35,16 @@ final class SeasonService: ObservableObject {
 
     private func createDefaultSeason() -> Season {
         let config = RemoteConfigService.shared
+        let endDate = config.seasonEndUtc
+
+        // If season_end_utc is not configured (epoch 0), use a far future date
+        let validEndDate = endDate.timeIntervalSince1970 > 0 ? endDate : Date.distantFuture
+
         return Season(
             id: config.seasonActiveId,
             name: config.seasonName,
             startUtc: Date(),
-            endUtc: config.seasonEndUtc,
+            endUtc: validEndDate,
             isActive: true,
             coefficients: config.buildSeasonCoefficients()
         )

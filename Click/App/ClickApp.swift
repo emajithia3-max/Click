@@ -40,6 +40,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
         FirebaseApp.configure()
+
+        Task {
+            await RemoteConfigService.shared.fetchAndActivate()
+        }
+
         AdService.shared.configure()
         return true
     }

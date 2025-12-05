@@ -23,7 +23,7 @@ final class RemoteConfigService: ObservableObject {
 
         remoteConfig.setDefaults([
             "season_active_id": "season_1" as NSObject,
-            "season_end_utc": Date().addingTimeInterval(28 * 24 * 3600).timeIntervalSince1970 as NSObject,
+            "season_end_utc": 0 as NSObject,  // Must be set in Firebase Remote Config
             "rank_growth_a": 500.0 as NSObject,
             "rank_growth_b": 1.22 as NSObject,
             "prestige_growth_a": 1.35 as NSObject,

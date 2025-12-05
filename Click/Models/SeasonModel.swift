@@ -30,6 +30,11 @@ struct Season: Codable, Identifiable {
     }
 
     var timeRemainingFormatted: String {
+        // Check if end date is not configured (distantFuture or very far)
+        if endUtc == Date.distantFuture || timeRemaining > 365 * 24 * 3600 {
+            return "Not Set"
+        }
+
         let remaining = timeRemaining
         let days = Int(remaining / 86400)
         let hours = Int((remaining.truncatingRemainder(dividingBy: 86400)) / 3600)
