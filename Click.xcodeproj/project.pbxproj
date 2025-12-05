@@ -19,6 +19,8 @@
 		5E6C73B02EE14066003F9EA5 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6C73AF2EE14066003F9EA5 /* Theme.swift */; };
 		5E6C73EA2EE270CA003F9EA5 /* WorldRankSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6C73E92EE270CA003F9EA5 /* WorldRankSetupView.swift */; };
 		5E6C73EC2EE27B23003F9EA5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6C73EB2EE27B23003F9EA5 /* SettingsView.swift */; };
+		5E6C73EF2EE27B41003F9EA5 /* AdConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6C73ED2EE27B41003F9EA5 /* AdConsentView.swift */; };
+		5E6C73F02EE27B41003F9EA5 /* AdRushExplanationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6C73EE2EE27B41003F9EA5 /* AdRushExplanationView.swift */; };
 		APP001 /* ClickApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC001 /* ClickApp.swift */; };
 		APP002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC002 /* ContentView.swift */; };
 		APP003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = RES001 /* Assets.xcassets */; };
@@ -70,6 +72,8 @@
 		5E6C73AF2EE14066003F9EA5 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		5E6C73E92EE270CA003F9EA5 /* WorldRankSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldRankSetupView.swift; sourceTree = "<group>"; };
 		5E6C73EB2EE27B23003F9EA5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		5E6C73ED2EE27B41003F9EA5 /* AdConsentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdConsentView.swift; sourceTree = "<group>"; };
+		5E6C73EE2EE27B41003F9EA5 /* AdRushExplanationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdRushExplanationView.swift; sourceTree = "<group>"; };
 		PROD001 /* Click.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Click.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		RES001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		RSCFG001 /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
@@ -289,6 +293,8 @@
 		ROOT = {
 			isa = PBXGroup;
 			children = (
+				5E6C73ED2EE27B41003F9EA5 /* AdConsentView.swift */,
+				5E6C73EE2EE27B41003F9EA5 /* AdRushExplanationView.swift */,
 				5E6C73EB2EE27B23003F9EA5 /* SettingsView.swift */,
 				5E6C73E92EE270CA003F9EA5 /* WorldRankSetupView.swift */,
 				5E6C73AF2EE14066003F9EA5 /* Theme.swift */,
@@ -413,6 +419,8 @@
 				VW009 /* LeaderboardRow.swift in Sources */,
 				VW010 /* PrestigeModal.swift in Sources */,
 				VW011 /* OfflineEarningsModal.swift in Sources */,
+				5E6C73EF2EE27B41003F9EA5 /* AdConsentView.swift in Sources */,
+				5E6C73F02EE27B41003F9EA5 /* AdRushExplanationView.swift in Sources */,
 				VW012 /* SeasonEndModal.swift in Sources */,
 				VW013 /* ConsentSheet.swift in Sources */,
 				VW014 /* RankBadge.swift in Sources */,
