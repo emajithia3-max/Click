@@ -182,6 +182,13 @@ final class GameStateService: ObservableObject {
         HapticsService.shared.rewardClaim()
     }
 
+    func addCoins(_ amount: Double) {
+        guard var data = seasonData else { return }
+        data.coins += amount
+        seasonData = data
+        HapticsService.shared.rewardClaim()
+    }
+
     func purchaseUpgrade(_ item: ShopItem) -> Bool {
         guard var data = seasonData else { return false }
 
@@ -237,19 +244,35 @@ final class GameStateService: ObservableObject {
 
         if let boost = boostState.activateBoost(type) {
             var data = seasonData
-            switch type {
-            case .adRush:
-                data?.adRushLastUsed = Date()
-            case .overclock:
-                data?.overclockLastUsed = Date()
+
+            // Handle ad-based boosts (set cooldown timestamp)
+            if type.isAdReward {
+                switch type {
+                case .adRush:
+                    data?.adRushLastUsed = Date()
+                case .tapFrenzy, .coinMagnet, .offlineDoubler:
+                    // These don't persist cooldowns to server
+                    break
+                default:
+                    break
+                }
+            }
+
+            // Handle purchasable boosts (deduct from inventory)
+            if type.isPurchasable {
                 let key = type.rawValue
                 let currentCount = data?.boostInventory[key] ?? 1
                 data?.boostInventory[key] = max(0, currentCount - 1)
-            case .offlineDoubler:
-                break
-            }
-            seasonData = data
 
+                switch type {
+                case .overclock:
+                    data?.overclockLastUsed = Date()
+                default:
+                    break
+                }
+            }
+
+            seasonData = data
             HapticsService.shared.boostActivate()
             return true
         }

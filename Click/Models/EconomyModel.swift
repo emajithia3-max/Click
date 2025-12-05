@@ -62,11 +62,141 @@ struct ShopItem: Identifiable {
         effectPerLevel: 1.0
     )
 
-    static let allItems: [ShopItem] = [
+    // New boost packs
+    static let luckyTapPack = ShopItem(
+        id: "lucky_tap",
+        name: "Lucky Tap Pack",
+        description: "10% chance for x10 taps",
+        type: .boostConsumable,
+        basePrice: 750,
+        priceGrowth: 1.0,
+        maxLevel: 99,
+        effectPerLevel: 10.0
+    )
+
+    static let criticalHitPack = ShopItem(
+        id: "critical_hit",
+        name: "Critical Hit Pack",
+        description: "Every 5th tap is x3",
+        type: .boostConsumable,
+        basePrice: 600,
+        priceGrowth: 1.0,
+        maxLevel: 99,
+        effectPerLevel: 3.0
+    )
+
+    static let autoTapBoostPack = ShopItem(
+        id: "auto_tap_boost",
+        name: "Auto Boost Pack",
+        description: "x2 auto-tap speed for 90s",
+        type: .boostConsumable,
+        basePrice: 400,
+        priceGrowth: 1.0,
+        maxLevel: 99,
+        effectPerLevel: 2.0
+    )
+
+    // Upgrade items
+    static let upgradeItems: [ShopItem] = [
         .clickMultiplier,
         .offlineMultiplier,
-        .tapsPerSecond,
-        .overclockPack
+        .tapsPerSecond
+    ]
+
+    // Boost items
+    static let boostItems: [ShopItem] = [
+        .overclockPack,
+        .luckyTapPack,
+        .criticalHitPack,
+        .autoTapBoostPack
+    ]
+
+    static let allItems: [ShopItem] = upgradeItems + boostItems
+}
+
+// MARK: - Shop Category
+enum ShopCategory: String, CaseIterable, Identifiable {
+    case upgrades = "Upgrades"
+    case boosts = "Boosts"
+    case adRewards = "Ad Rewards"
+
+    var id: String { rawValue }
+
+    var icon: String {
+        switch self {
+        case .upgrades: return "arrow.up.circle.fill"
+        case .boosts: return "flame.fill"
+        case .adRewards: return "play.rectangle.fill"
+        }
+    }
+}
+
+// MARK: - Ad Reward Items
+struct AdRewardItem: Identifiable {
+    let id: String
+    let name: String
+    let description: String
+    let icon: String
+    let rewardType: AdRewardType
+    let cooldownMinutes: Int
+
+    enum AdRewardType {
+        case coins(amount: Double)
+        case boost(type: BoostType)
+        case multiplier(value: Double, duration: TimeInterval)
+    }
+
+    static let freeCoins = AdRewardItem(
+        id: "free_coins",
+        name: "Free Coins",
+        description: "Watch an ad to earn 100 coins",
+        icon: "dollarsign.circle.fill",
+        rewardType: .coins(amount: 100),
+        cooldownMinutes: 5
+    )
+
+    static let tapFrenzy = AdRewardItem(
+        id: "tap_frenzy",
+        name: "Tap Frenzy",
+        description: "x3 taps for 60 seconds",
+        icon: "sparkles",
+        rewardType: .boost(type: .tapFrenzy),
+        cooldownMinutes: 10
+    )
+
+    static let coinMagnet = AdRewardItem(
+        id: "coin_magnet",
+        name: "Coin Magnet",
+        description: "x2 coins for 2 minutes",
+        icon: "magnet",
+        rewardType: .boost(type: .coinMagnet),
+        cooldownMinutes: 15
+    )
+
+    static let adRush = AdRewardItem(
+        id: "ad_rush",
+        name: "Ad Rush",
+        description: "x2 taps for 30 seconds",
+        icon: "bolt.fill",
+        rewardType: .boost(type: .adRush),
+        cooldownMinutes: 2
+    )
+
+    static let megaCoins = AdRewardItem(
+        id: "mega_coins",
+        name: "Mega Coins",
+        description: "Watch an ad to earn 500 coins",
+        icon: "star.circle.fill",
+        rewardType: .coins(amount: 500),
+        cooldownMinutes: 30
+    )
+
+    static let allItems: [AdRewardItem] = [
+        .freeCoins,
+        .adRush,
+        .tapFrenzy,
+        .coinMagnet,
+        .megaCoins
     ]
 }
 

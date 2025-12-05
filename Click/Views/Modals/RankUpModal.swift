@@ -82,8 +82,7 @@ struct RankUpModal: View {
 
     private var rewardSection: some View {
         HStack {
-            Image(systemName: "bitcoinsign.circle.fill")
-                .foregroundColor(.yellow)
+            CoinIcon(size: 20)
 
             Text("+\(NumberFormatService.shared.formatCoins(EconomyService.shared.coinsForRankUp(newRankIndex: rank.index)))")
                 .font(Typography.h2)

@@ -3,6 +3,7 @@ import SwiftUI
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
     @StateObject private var leaderboardViewModel = LeaderboardViewModel()
+    @StateObject private var dailyRewardsManager = DailyRewardsManager.shared
     @EnvironmentObject var gameState: GameStateService
 
     var body: some View {
@@ -63,12 +64,21 @@ struct HomeView: View {
                 .presentationDetents([.height(450)])
                 .presentationDragIndicator(.visible)
             }
+            .sheet(isPresented: $dailyRewardsManager.showDailyRewards) {
+                DailyRewardsView()
+                    .presentationDetents([.height(550)])
+                    .presentationDragIndicator(.visible)
+            }
             .task {
                 await leaderboardViewModel.loadLeaderboard()
             }
             .onAppear {
                 leaderboardViewModel.startRealtimeUpdates()
                 leaderboardViewModel.checkFirstLaunchConsent()
+                // Check daily rewards after a short delay to not conflict with other modals
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    dailyRewardsManager.checkAndShowDailyRewards()
+                }
             }
             .onDisappear {
                 leaderboardViewModel.stopRealtimeUpdates()
@@ -247,8 +257,7 @@ struct HomeView: View {
             }
 
             HStack {
-                Image(systemName: "bitcoinsign.circle.fill")
-                    .foregroundColor(.yellow)
+                CoinIcon(size: 24)
                 Text(NumberFormatService.shared.formatCoins(viewModel.coins))
                     .font(Typography.h2)
                     .foregroundColor(.primary)
@@ -267,6 +276,17 @@ struct HomeView: View {
                 activeBoost: viewModel.activeBoosts.first { $0.type == .adRush }
             ) {
                 viewModel.onAdRushTapped()
+            }
+
+            if viewModel.overclockCount > 0 || viewModel.activeBoosts.contains(where: { $0.type == .overclock }) {
+                OverclockButton(
+                    count: viewModel.overclockCount,
+                    isAvailable: viewModel.canActivateOverclock(),
+                    cooldownText: viewModel.overclockCooldownRemaining(),
+                    activeBoost: viewModel.activeBoosts.first { $0.type == .overclock }
+                ) {
+                    viewModel.activateOverclock()
+                }
             }
 
             if viewModel.shouldShowPrestigeButton {

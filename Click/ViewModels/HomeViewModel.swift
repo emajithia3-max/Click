@@ -218,10 +218,14 @@ final class HomeViewModel: ObservableObject {
         showAdConsent = false
         if pendingAdRushAfterConsent {
             pendingAdRushAfterConsent = false
-            if !hasSeenAdRushExplanation {
-                showAdRushExplanation = true
-            } else {
-                activateAdRush()
+            // Delay to allow the sheet to dismiss before showing the next one
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                guard let self = self else { return }
+                if !self.hasSeenAdRushExplanation {
+                    self.showAdRushExplanation = true
+                } else {
+                    self.activateAdRush()
+                }
             }
         }
     }
@@ -255,6 +259,27 @@ final class HomeViewModel: ObservableObject {
 
     func adRushCooldownRemaining() -> String {
         gameState.boostState.cooldownRemainingFormatted(.adRush)
+    }
+
+    // MARK: - Overclock
+
+    var overclockCount: Int {
+        gameState.boostState.inventory[.overclock] ?? 0
+    }
+
+    func canActivateOverclock() -> Bool {
+        !gameState.boostState.isOnCooldown(.overclock) &&
+        !gameState.boostState.hasActiveBoost(.overclock) &&
+        overclockCount > 0
+    }
+
+    func overclockCooldownRemaining() -> String {
+        gameState.boostState.cooldownRemainingFormatted(.overclock)
+    }
+
+    func activateOverclock() {
+        guard canActivateOverclock() else { return }
+        _ = gameState.activateBoost(.overclock)
     }
 
     func prestige() {

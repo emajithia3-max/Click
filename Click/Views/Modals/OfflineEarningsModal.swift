@@ -55,9 +55,7 @@ struct OfflineEarningsModal: View {
         VStack(spacing: 16) {
             if let earnings = gameState.pendingOfflineEarnings {
                 HStack {
-                    Image(systemName: "bitcoinsign.circle.fill")
-                        .font(.system(size: 32))
-                        .foregroundColor(.yellow)
+                    CoinIcon(size: 32)
 
                     Text(NumberFormatService.shared.formatCoins(earnings.baseCoins))
                         .font(Typography.counter)

@@ -1,9 +1,15 @@
 import Foundation
+import SwiftUI
 
 enum BoostType: String, Codable, CaseIterable, Identifiable {
     case adRush = "ad_rush"
     case overclock = "overclock"
     case offlineDoubler = "offline_doubler"
+    case luckyTap = "lucky_tap"
+    case criticalHit = "critical_hit"
+    case tapFrenzy = "tap_frenzy"
+    case coinMagnet = "coin_magnet"
+    case autoTapBoost = "auto_tap_boost"
 
     var id: String { rawValue }
 
@@ -12,6 +18,11 @@ enum BoostType: String, Codable, CaseIterable, Identifiable {
         case .adRush: return "Ad Rush"
         case .overclock: return "Overclock"
         case .offlineDoubler: return "Offline Doubler"
+        case .luckyTap: return "Lucky Tap"
+        case .criticalHit: return "Critical Hit"
+        case .tapFrenzy: return "Tap Frenzy"
+        case .coinMagnet: return "Coin Magnet"
+        case .autoTapBoost: return "Auto Boost"
         }
     }
 
@@ -20,6 +31,11 @@ enum BoostType: String, Codable, CaseIterable, Identifiable {
         case .adRush: return "x2 taps for 30 seconds"
         case .overclock: return "x5 taps for 15 seconds"
         case .offlineDoubler: return "Double offline earnings"
+        case .luckyTap: return "10% chance for x10 taps"
+        case .criticalHit: return "Every 5th tap is x3"
+        case .tapFrenzy: return "x3 taps for 60 seconds"
+        case .coinMagnet: return "x2 coins for 2 minutes"
+        case .autoTapBoost: return "x2 auto-tap speed"
         }
     }
 
@@ -28,6 +44,11 @@ enum BoostType: String, Codable, CaseIterable, Identifiable {
         case .adRush: return 2.0
         case .overclock: return 5.0
         case .offlineDoubler: return 2.0
+        case .luckyTap: return 1.0
+        case .criticalHit: return 1.0
+        case .tapFrenzy: return 3.0
+        case .coinMagnet: return 2.0
+        case .autoTapBoost: return 2.0
         }
     }
 
@@ -36,6 +57,11 @@ enum BoostType: String, Codable, CaseIterable, Identifiable {
         case .adRush: return 30
         case .overclock: return 15
         case .offlineDoubler: return 0
+        case .luckyTap: return 45
+        case .criticalHit: return 30
+        case .tapFrenzy: return 60
+        case .coinMagnet: return 120
+        case .autoTapBoost: return 90
         }
     }
 
@@ -44,6 +70,11 @@ enum BoostType: String, Codable, CaseIterable, Identifiable {
         case .adRush: return 120
         case .overclock: return 300
         case .offlineDoubler: return 0
+        case .luckyTap: return 180
+        case .criticalHit: return 240
+        case .tapFrenzy: return 300
+        case .coinMagnet: return 600
+        case .autoTapBoost: return 300
         }
     }
 
@@ -52,6 +83,11 @@ enum BoostType: String, Codable, CaseIterable, Identifiable {
         case .adRush: return .rewardedAd
         case .overclock: return .coins
         case .offlineDoubler: return .rewardedAd
+        case .luckyTap: return .coins
+        case .criticalHit: return .coins
+        case .tapFrenzy: return .rewardedAd
+        case .coinMagnet: return .rewardedAd
+        case .autoTapBoost: return .coins
         }
     }
 
@@ -60,7 +96,51 @@ enum BoostType: String, Codable, CaseIterable, Identifiable {
         case .adRush: return "bolt.fill"
         case .overclock: return "flame.fill"
         case .offlineDoubler: return "moon.fill"
+        case .luckyTap: return "star.fill"
+        case .criticalHit: return "burst.fill"
+        case .tapFrenzy: return "sparkles"
+        case .coinMagnet: return "magnet"
+        case .autoTapBoost: return "hare.fill"
         }
+    }
+
+    var iconColors: (primary: Color, secondary: Color) {
+        switch self {
+        case .adRush: return (Color(hex: "FFD700"), Color(hex: "FFA500"))
+        case .overclock: return (Color(hex: "FF6B35"), Color(hex: "FF4500"))
+        case .offlineDoubler: return (Color(hex: "7B68EE"), Color(hex: "4B0082"))
+        case .luckyTap: return (Color(hex: "00CED1"), Color(hex: "20B2AA"))
+        case .criticalHit: return (Color(hex: "FF1493"), Color(hex: "DC143C"))
+        case .tapFrenzy: return (Color(hex: "9400D3"), Color(hex: "8A2BE2"))
+        case .coinMagnet: return (Color(hex: "FFD700"), Color(hex: "DAA520"))
+        case .autoTapBoost: return (Color(hex: "32CD32"), Color(hex: "228B22"))
+        }
+    }
+
+    var isPurchasable: Bool {
+        switch self {
+        case .overclock, .luckyTap, .criticalHit, .autoTapBoost:
+            return true
+        default:
+            return false
+        }
+    }
+
+    var isAdReward: Bool {
+        switch self {
+        case .adRush, .tapFrenzy, .coinMagnet, .offlineDoubler:
+            return true
+        default:
+            return false
+        }
+    }
+
+    static var purchasableBoosts: [BoostType] {
+        allCases.filter { $0.isPurchasable }
+    }
+
+    static var adRewardBoosts: [BoostType] {
+        allCases.filter { $0.isAdReward }
     }
 }
 

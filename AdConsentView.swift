@@ -40,7 +40,8 @@ struct AdConsentView: View {
                     .font(Typography.body)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
-                    .padding(.horizontal, 32)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.horizontal, 24)
             }
 
             Spacer()

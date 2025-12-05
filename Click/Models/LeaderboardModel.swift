@@ -126,8 +126,8 @@ struct WorldRankState {
 }
 
 enum LeaderboardTab: String, CaseIterable, Identifiable {
-    case global = "Global"
-    case lifetime = "History"
+    case global = "Leaderboard"
+    case lifetime = "My Stats"
 
     var id: String { rawValue }
 }

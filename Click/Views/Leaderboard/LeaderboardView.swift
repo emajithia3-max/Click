@@ -66,7 +66,9 @@ struct LeaderboardView: View {
             if viewModel.isLoading {
                 ProgressView()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-            } else if viewModel.leaderboardData.top.isEmpty {
+            } else if !viewModel.isOptedIn {
+                notOptedInView
+            } else if viewModel.leaderboardData.top.isEmpty && viewModel.userPosition == nil {
                 emptyLeaderboard
             } else {
                 leaderboardList
@@ -74,22 +76,61 @@ struct LeaderboardView: View {
         }
     }
 
+    private var notOptedInView: some View {
+        VStack(spacing: 16) {
+            Image(systemName: "globe")
+                .font(.system(size: 48))
+                .foregroundColor(.secondary)
+
+            Text("World Rank Disabled")
+                .font(Typography.h2)
+                .foregroundColor(.primary)
+
+            Text("Enable World Rank in Settings to see the leaderboard")
+                .font(Typography.body)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+
+            Button {
+                viewModel.showConsentSheet = true
+            } label: {
+                Text("Enable World Rank")
+                    .font(Typography.button)
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 24)
+                    .padding(.vertical, 12)
+                    .background(
+                        Capsule()
+                            .fill(Color.blue.gradient)
+                    )
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
     private var leaderboardList: some View {
         ScrollView {
             LazyVStack(spacing: 8) {
-                ForEach(viewModel.leaderboardData.top) { entry in
-                    LeaderboardRow(
-                        entry: entry,
-                        isCurrentUser: entry.odid == AuthService.shared.uid
-                    )
-                }
+                if viewModel.leaderboardData.top.isEmpty {
+                    // Show user's own position when no top entries exist
+                    if let position = viewModel.userPosition {
+                        yourPositionCard(position: position)
+                    }
+                } else {
+                    ForEach(viewModel.leaderboardData.top) { entry in
+                        LeaderboardRow(
+                            entry: entry,
+                            isCurrentUser: entry.odid == AuthService.shared.uid
+                        )
+                    }
 
-                if let position = viewModel.userPosition,
-                   viewModel.userEntry == nil {
-                    Divider()
-                        .padding(.vertical, 8)
+                    if let position = viewModel.userPosition,
+                       viewModel.userEntry == nil {
+                        Divider()
+                            .padding(.vertical, 8)
 
-                    yourPositionCard(position: position)
+                        yourPositionCard(position: position)
+                    }
                 }
             }
             .padding()

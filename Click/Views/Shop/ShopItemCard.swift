@@ -102,8 +102,7 @@ struct ShopItemCard: View {
                     Text("Max Level")
                         .font(Typography.button)
                 } else {
-                    Image(systemName: "bitcoinsign.circle.fill")
-                        .foregroundColor(.yellow)
+                    CoinIcon(size: 16)
                     Text(NumberFormatService.shared.formatCoins(price))
                         .font(Typography.button)
                 }
